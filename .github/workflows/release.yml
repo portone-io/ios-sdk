@@ -13,6 +13,7 @@ jobs:
     permissions:
       contents: write
       actions: write
+      pull-requests: write
     steps:
     - uses: actions/checkout@v4
     - name: Setup pnpm
