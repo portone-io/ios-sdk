@@ -1,0 +1,11 @@
+{
+  "name": "PortOneSdk",
+  "version": "0.0.0",
+  "description": "PortOne SDK for iOS",
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.0",
+  "private": true,
+  "devDependencies": {
+    "@changesets/cli": "^2.29.5"
+  }
+}

@@ -1,0 +1,20 @@
+name: Lint
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Lint
+      run: |
+        xcrun swift-format lint . \
+            --parallel \
+            --recursive \
+            --strict
