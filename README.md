@@ -37,7 +37,8 @@ dependencies: [
 
 ### Info.plist 설정
 
-앱의 `Info.plist`에 다음 설정을 추가해야 합니다:
+앱의 `Info.plist`에 다음 설정을 추가해야 합니다.
+자세한 내용은 [SwiftExample/SwiftExample/Info.plist](SwiftExample/SwiftExample/Info.plist)에서 확인할 수 있습니다.
 
 1. **URL Scheme 등록** (결제 완료 후 앱으로 돌아오기 위함)
    ```xml
@@ -60,7 +61,7 @@ dependencies: [
        <string>naverpay</string>
        <string>ispmobile</string>
        <string>shinhan-sr-ansimclick</string>
-       <!-- 기타 필요한 결제 앱 스킴 추가 -->
+       <!-- ... -->
    </array>
    ```
 
