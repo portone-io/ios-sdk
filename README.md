@@ -189,6 +189,7 @@ struct IdentityVerificationView: View {
 ## 파라미터 레퍼런스
 
 결제, 빌링키 발급, 본인인증의 상세 파라미터는 [포트원 개발자 문서](https://developers.portone.io/sdk/ko/v2-sdk/readme)를 참조하세요.
+단, `redirectUrl` 파라미터의 경우 결제 결과를 받아오기 위해 SDK가 자동 입력하므로 무시됩니다.
 
 ## 예제 프로젝트
 
