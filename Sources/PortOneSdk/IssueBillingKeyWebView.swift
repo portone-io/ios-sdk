@@ -1,5 +1,8 @@
 import SwiftUI
 import WebKit
+import os
+
+private let logger = Logger(subsystem: "io.portone.sdk", category: "IssueBillingKey")
 
 public struct IssueBillingKeyWebView: UIViewRepresentable {
 
@@ -8,7 +11,7 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
 
   public init?(data: [String: Any], onCompletion: @escaping (IssueBillingKeyResult) -> Void) {
     if data["redirectUrl"] != nil {
-      PortOneLogger.log("redirectUrl 파라미터는 SDK에서 자동으로 설정되므로 생략해 주세요.")
+      logger.warning("redirectUrl 파라미터는 SDK에서 자동으로 설정되므로 생략해 주세요.")
     }
     guard let json = try? JSONSerialization.data(withJSONObject: data) else {
       return nil
@@ -18,7 +21,7 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
     }
     self.json = jsonString
     self.onCompletion = { result in
-      PortOneLogger.log("complete: \(result)")
+      logger.info("Billing key issuance completed: \(result)")
       onCompletion(result)
     }
   }
@@ -57,43 +60,51 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
         });
       });
       </script>
-      <body>
       </body>
       </html>
       """
-    PortOneLogger.log("load initial HTML")
+    logger.debug("Loading initial HTML")
     webView.loadHTMLString(html, baseURL: URL(string: "https://ios-sdk.portone.io/ready"))
 
     return webView
   }
 
   public func updateUIView(_ uiView: WKWebView, context: Context) {
+    context.coordinator.onCompletion = onCompletion
   }
 
   public func makeCoordinator() -> Coordinator {
-    Coordinator(self)
+    Coordinator(onCompletion: onCompletion)
   }
 
   // MARK: - Coordinator
 
   public class Coordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
-    var parent: IssueBillingKeyWebView
+    var onCompletion: (IssueBillingKeyResult) -> Void
     private var isCompleted = false  // onCompletion이 중복 호출되는 것을 방지
+    private var lock = os_unfair_lock()
 
-    init(_ parent: IssueBillingKeyWebView) {
-      self.parent = parent
+    init(onCompletion: @escaping (IssueBillingKeyResult) -> Void) {
+      self.onCompletion = onCompletion
+      super.init()
     }
 
     // postMessage callback
     public func userContentController(
       _ userContentController: WKUserContentController, didReceive message: WKScriptMessage
     ) {
-      guard !isCompleted else { return }
-
       if message.name == "errorHandler", let errorMessage = message.body as? String {
-        PortOneLogger.log("error from webView: \(errorMessage)")
+        logger.error("Error from webView: \(errorMessage)")
+        
+        os_unfair_lock_lock(&lock)
+        guard !isCompleted else {
+          os_unfair_lock_unlock(&lock)
+          return
+        }
         isCompleted = true
-        parent.onCompletion(.failure(.invalidArgument(message: errorMessage)))
+        os_unfair_lock_unlock(&lock)
+        
+        onCompletion(.failure(.invalidArgument(message: errorMessage)))
       }
     }
 
@@ -102,52 +113,55 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
       decisionHandler: @escaping @MainActor (WKNavigationActionPolicy) -> Void
     ) {
       guard let url = navigationAction.request.url else {
-        PortOneLogger.log("cannot fetch url, allowing navigation")
+        logger.warning("Cannot fetch URL, allowing navigation")
         decisionHandler(.allow)
         return
       }
 
-      PortOneLogger.log("try navigating to: \(url.absoluteString)")
+      logger.debug("Attempting navigation to: \(url.absoluteString)")
 
       // 완료 URL 처리
       if url.absoluteString.starts(with: "https://ios-sdk.portone.io/done") {
         decisionHandler(.cancel)
+        
+        os_unfair_lock_lock(&lock)
         guard !isCompleted else {
+          os_unfair_lock_unlock(&lock)
           return
         }
         isCompleted = true
+        os_unfair_lock_unlock(&lock)
 
         let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         let queryItems = components?.queryItems ?? []
 
-        guard let billingKey = queryItems.first(where: { $0.name == "billingKey" })!.value else {
-          parent.onCompletion(.failure(.unknown(message: "빌링키 발급 결과에서 billingKey를 찾을 수 없습니다.")))
-          return
-        }
         if let code = queryItems.first(where: { $0.name == "code" })?.value {
           let portMessage = queryItems.first(where: { $0.name == "message" })?.value
           let pgCode = queryItems.first(where: { $0.name == "pgCode" })?.value
           let pgMessage = queryItems.first(where: { $0.name == "pgMessage" })?.value
-          parent.onCompletion(
+          onCompletion(
             .failure(
-              .failed(
-                billingKey: billingKey, code: code, message: portMessage, pgCode: pgCode,
-                pgMessage: pgMessage)))
+              .failed(code: code, message: portMessage, pgCode: pgCode, pgMessage: pgMessage)
+              ))
         } else {
-          parent.onCompletion(.success(.init(billingKey: billingKey)))
+          guard let billingKey = queryItems.first(where: { $0.name == "billingKey" })?.value else {
+            onCompletion(.failure(.unknown(message: "빌링키 발급 결과에서 billingKey를 찾을 수 없습니다.")))
+            return
+          }
+          onCompletion(.success(.init(billingKey: billingKey)))
         }
         return
       }
 
       if let scheme = url.scheme, !["http", "https"].contains(scheme.lowercased()) {
         decisionHandler(.cancel)  // 이동 제한
-        PortOneLogger.log("found app scheme: \(scheme)")
+        logger.debug("Found app scheme: \(scheme)")
         if UIApplication.shared.canOpenURL(url) {
           UIApplication.shared.open(url, options: [:]) { success in
-            PortOneLogger.log("app opened: \(success)")
+            logger.debug("App opened: \(success)")
           }
         } else {
-
+          logger.warning("Cannot open URL with scheme '\(scheme)' - app may not be installed")
         }
         return
       }
@@ -158,16 +172,24 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
     public func webView(
       _ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error
     ) {
-      guard !isCompleted else { return }
-      PortOneLogger.log("error navigating: \(error)")
+      os_unfair_lock_lock(&lock)
+      let alreadyCompleted = isCompleted
+      os_unfair_lock_unlock(&lock)
+      
+      guard !alreadyCompleted else { return }
+      logger.error("Navigation error: \(error)")
     }
 
     public func webView(
       _ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!,
       withError error: Error
     ) {
-      guard !isCompleted else { return }
-      PortOneLogger.log("error loading content: \(error)")
+      os_unfair_lock_lock(&lock)
+      let alreadyCompleted = isCompleted
+      os_unfair_lock_unlock(&lock)
+      
+      guard !alreadyCompleted else { return }
+      logger.error("Content loading error: \(error)")
     }
   }
 }

@@ -4,8 +4,7 @@ public struct IssueBillingKeySuccess: Equatable {
 
 public enum IssueBillingKeyError: Error, Equatable {
   /// 빌링키 발급이 실패한 경우
-  case failed(
-    billingKey: String, code: String, message: String?, pgCode: String?, pgMessage: String?)
+  case failed(code: String, message: String?, pgCode: String?, pgMessage: String?)
 
   /// 빌링키 발급 요청 파라미터가 잘못된 경우
   case invalidArgument(message: String)

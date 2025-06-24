@@ -1,5 +1,8 @@
 import SwiftUI
 import WebKit
+import os
+
+private let logger = Logger(subsystem: "io.portone.sdk", category: "IdentityVerification")
 
 public struct IdentityVerificationWebView: UIViewRepresentable {
 
@@ -8,7 +11,7 @@ public struct IdentityVerificationWebView: UIViewRepresentable {
 
   public init?(data: [String: Any], onCompletion: @escaping (IdentityVerificationResult) -> Void) {
     if data["redirectUrl"] != nil {
-      PortOneLogger.log("redirectUrl 파라미터는 SDK에서 자동으로 설정되므로 생략해 주세요.")
+      logger.warning("redirectUrl 파라미터는 SDK에서 자동으로 설정되므로 생략해 주세요.")
     }
     guard let json = try? JSONSerialization.data(withJSONObject: data) else {
       return nil
@@ -18,7 +21,7 @@ public struct IdentityVerificationWebView: UIViewRepresentable {
     }
     self.json = jsonString
     self.onCompletion = { result in
-      PortOneLogger.log("complete: \(result)")
+      logger.info("Identity verification completed: \(result)")
       onCompletion(result)
     }
   }
@@ -57,43 +60,51 @@ public struct IdentityVerificationWebView: UIViewRepresentable {
         });
       });
       </script>
-      <body>
       </body>
       </html>
       """
-    PortOneLogger.log("load initial HTML")
+    logger.debug("Loading initial HTML")
     webView.loadHTMLString(html, baseURL: URL(string: "https://ios-sdk.portone.io/ready"))
 
     return webView
   }
 
   public func updateUIView(_ uiView: WKWebView, context: Context) {
+    context.coordinator.onCompletion = onCompletion
   }
 
   public func makeCoordinator() -> Coordinator {
-    Coordinator(self)
+    Coordinator(onCompletion: onCompletion)
   }
 
   // MARK: - Coordinator
 
   public class Coordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
-    var parent: IdentityVerificationWebView
+    var onCompletion: (IdentityVerificationResult) -> Void
     private var isCompleted = false  // onCompletion이 중복 호출되는 것을 방지
+    private var lock = os_unfair_lock()
 
-    init(_ parent: IdentityVerificationWebView) {
-      self.parent = parent
+    init(onCompletion: @escaping (IdentityVerificationResult) -> Void) {
+      self.onCompletion = onCompletion
+      super.init()
     }
 
     // postMessage callback
     public func userContentController(
       _ userContentController: WKUserContentController, didReceive message: WKScriptMessage
     ) {
-      guard !isCompleted else { return }
-
       if message.name == "errorHandler", let errorMessage = message.body as? String {
-        PortOneLogger.log("error from webView: \(errorMessage)")
+        logger.error("Error from webView: \(errorMessage)")
+        
+        os_unfair_lock_lock(&lock)
+        guard !isCompleted else {
+          os_unfair_lock_unlock(&lock)
+          return
+        }
         isCompleted = true
-        parent.onCompletion(.failure(.invalidArgument(message: errorMessage)))
+        os_unfair_lock_unlock(&lock)
+        
+        onCompletion(.failure(.invalidArgument(message: errorMessage)))
       }
     }
 
@@ -102,20 +113,24 @@ public struct IdentityVerificationWebView: UIViewRepresentable {
       decisionHandler: @escaping @MainActor (WKNavigationActionPolicy) -> Void
     ) {
       guard let url = navigationAction.request.url else {
-        PortOneLogger.log("cannot fetch url, allowing navigation")
+        logger.warning("Cannot fetch URL, allowing navigation")
         decisionHandler(.allow)
         return
       }
 
-      PortOneLogger.log("try navigating to: \(url.absoluteString)")
+      logger.debug("Attempting navigation to: \(url.absoluteString)")
 
       // 완료 URL 처리
       if url.absoluteString.starts(with: "https://ios-sdk.portone.io/done") {
         decisionHandler(.cancel)
+        
+        os_unfair_lock_lock(&lock)
         guard !isCompleted else {
+          os_unfair_lock_unlock(&lock)
           return
         }
         isCompleted = true
+        os_unfair_lock_unlock(&lock)
 
         let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         let queryItems = components?.queryItems ?? []
@@ -123,18 +138,18 @@ public struct IdentityVerificationWebView: UIViewRepresentable {
         guard
           let identityVerificationTxId = queryItems.first(where: {
             $0.name == "identityVerificationTxId"
-          })!.value
+          })?.value
         else {
-          parent.onCompletion(
+          onCompletion(
             .failure(.unknown(message: "본인인증 결과에서 identityVerificationTxId를 찾을 수 없습니다.")))
           return
         }
         guard
           let identityVerificationId = queryItems.first(where: {
             $0.name == "identityVerificationId"
-          })!.value
+          })?.value
         else {
-          parent.onCompletion(
+          onCompletion(
             .failure(.unknown(message: "본인인증 결과에서 identityVerificationId를 찾을 수 없습니다.")))
           return
         }
@@ -142,14 +157,14 @@ public struct IdentityVerificationWebView: UIViewRepresentable {
           let portMessage = queryItems.first(where: { $0.name == "message" })?.value
           let pgCode = queryItems.first(where: { $0.name == "pgCode" })?.value
           let pgMessage = queryItems.first(where: { $0.name == "pgMessage" })?.value
-          parent.onCompletion(
+          onCompletion(
             .failure(
               .failed(
                 identityVerificationTxId: identityVerificationTxId,
                 identityVerificationId: identityVerificationId, code: code, message: portMessage,
                 pgCode: pgCode, pgMessage: pgMessage)))
         } else {
-          parent.onCompletion(
+          onCompletion(
             .success(
               .init(
                 identityVerificationTxId: identityVerificationTxId,
@@ -160,13 +175,13 @@ public struct IdentityVerificationWebView: UIViewRepresentable {
 
       if let scheme = url.scheme, !["http", "https"].contains(scheme.lowercased()) {
         decisionHandler(.cancel)  // 이동 제한
-        PortOneLogger.log("found app scheme: \(scheme)")
+        logger.debug("Found app scheme: \(scheme)")
         if UIApplication.shared.canOpenURL(url) {
           UIApplication.shared.open(url, options: [:]) { success in
-            PortOneLogger.log("app opened: \(success)")
+            logger.debug("App opened: \(success)")
           }
         } else {
-
+          logger.warning("Cannot open URL with scheme '\(scheme)' - app may not be installed")
         }
         return
       }
@@ -177,16 +192,24 @@ public struct IdentityVerificationWebView: UIViewRepresentable {
     public func webView(
       _ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error
     ) {
-      guard !isCompleted else { return }
-      PortOneLogger.log("error navigating: \(error)")
+      os_unfair_lock_lock(&lock)
+      let alreadyCompleted = isCompleted
+      os_unfair_lock_unlock(&lock)
+      
+      guard !alreadyCompleted else { return }
+      logger.error("Navigation error: \(error)")
     }
 
     public func webView(
       _ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!,
       withError error: Error
     ) {
-      guard !isCompleted else { return }
-      PortOneLogger.log("error loading content: \(error)")
+      os_unfair_lock_lock(&lock)
+      let alreadyCompleted = isCompleted
+      os_unfair_lock_unlock(&lock)
+      
+      guard !alreadyCompleted else { return }
+      logger.error("Content loading error: \(error)")
     }
   }
 }
