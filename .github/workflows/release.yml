@@ -32,4 +32,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Push Tags
       if: ${{ steps.changesets.outputs.hasChangesets == 'false' }}
-      run: git push --follow-tags
+      run: |
+        export VERSION=$(jq -r '.version' package.json)
+        git tag "$VERSION"
+        git push --tags
