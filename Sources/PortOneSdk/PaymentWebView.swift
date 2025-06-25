@@ -2,8 +2,10 @@ import SwiftUI
 import WebKit
 import os
 
+@available(iOS 14.0, *)
 private let logger = Logger(subsystem: "io.portone.sdk", category: "Payment")
 
+@available(iOS 14.0, *)
 public struct PaymentWebView: UIViewRepresentable {
 
   let json: String
@@ -14,12 +16,13 @@ public struct PaymentWebView: UIViewRepresentable {
       logger.warning("redirectUrl 파라미터는 SDK에서 자동으로 설정되므로 생략해 주세요.")
     }
     guard let jsonData = try? JSONSerialization.data(withJSONObject: data),
-          let jsonString = String(data: jsonData, encoding: .utf8) else {
+      let jsonString = String(data: jsonData, encoding: .utf8)
+    else {
       return nil
     }
     self.json = jsonString
     self.onCompletion = { result in
-      logger.info("Payment completed: \(result)")
+      logger.debug("completed: \(String(reflecting: result))")
       onCompletion(result)
     }
   }
@@ -93,7 +96,7 @@ public struct PaymentWebView: UIViewRepresentable {
     ) {
       if message.name == "errorHandler", let errorMessage = message.body as? String {
         logger.error("Error from webView: \(errorMessage)")
-        
+
         os_unfair_lock_lock(&lock)
         guard !isCompleted else {
           os_unfair_lock_unlock(&lock)
@@ -101,7 +104,7 @@ public struct PaymentWebView: UIViewRepresentable {
         }
         isCompleted = true
         os_unfair_lock_unlock(&lock)
-        
+
         onCompletion(.failure(.invalidArgument(message: errorMessage)))
       }
     }
@@ -121,7 +124,7 @@ public struct PaymentWebView: UIViewRepresentable {
       // 완료 URL 처리
       if url.absoluteString.starts(with: "https://ios-sdk.portone.io/done") {
         decisionHandler(.cancel)
-        
+
         os_unfair_lock_lock(&lock)
         guard !isCompleted else {
           os_unfair_lock_unlock(&lock)
@@ -178,7 +181,7 @@ public struct PaymentWebView: UIViewRepresentable {
       os_unfair_lock_lock(&lock)
       let alreadyCompleted = isCompleted
       os_unfair_lock_unlock(&lock)
-      
+
       guard !alreadyCompleted else { return }
       logger.error("Navigation failed: \(error)")
     }
@@ -190,7 +193,7 @@ public struct PaymentWebView: UIViewRepresentable {
       os_unfair_lock_lock(&lock)
       let alreadyCompleted = isCompleted
       os_unfair_lock_unlock(&lock)
-      
+
       guard !alreadyCompleted else { return }
       logger.error("Failed to load content: \(error)")
     }

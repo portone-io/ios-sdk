@@ -29,7 +29,7 @@ struct ContentView: View {
         action: {
           showPaymentSheet = true
         },
-        {
+        label: {
           Text("결제 테스트")
             .frame(maxWidth: .infinity)
         }
@@ -39,7 +39,7 @@ struct ContentView: View {
         action: {
           showIssueBillingKeySheet = true
         },
-        {
+        label: {
           Text("빌링키 발급 테스트")
             .frame(maxWidth: .infinity)
         }
@@ -49,7 +49,7 @@ struct ContentView: View {
         action: {
           showIdentityVerificationSheet = true
         },
-        {
+        label: {
           Text("본인인증 테스트")
             .frame(maxWidth: .infinity)
         }
@@ -82,7 +82,7 @@ struct ContentView: View {
           }
         }
       },
-      {
+      content: {
         let paymentId = UUID().uuidString.replacingOccurrences(of: "-", with: "")
 
         PaymentWebView(
@@ -112,7 +112,7 @@ struct ContentView: View {
             alertInfo = AlertInfo(title: "빌링키 발급 성공", message: "\(billingKey)")
             break
           case .failure(
-            .failed(billingKey: _, code: let code, message: let message, pgCode: _, pgMessage: _)):
+            .failed(code: let code, message: let message, pgCode: _, pgMessage: _)):
             alertInfo = AlertInfo(title: "빌링키 발급 실패", message: message ?? "PG사 코드: \(code)")
             break
           case .failure(.invalidArgument(message: let message)):
@@ -124,7 +124,7 @@ struct ContentView: View {
           }
         }
       },
-      {
+      content: {
         IssueBillingKeyWebView(
           data: [
             "storeId": storeId,
@@ -164,7 +164,7 @@ struct ContentView: View {
           }
         }
       },
-      {
+      content: {
         let identityVerificationId = UUID().uuidString.replacingOccurrences(of: "-", with: "")
 
         IdentityVerificationWebView(

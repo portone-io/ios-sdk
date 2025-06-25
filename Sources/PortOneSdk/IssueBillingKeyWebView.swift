@@ -2,8 +2,10 @@ import SwiftUI
 import WebKit
 import os
 
+@available(iOS 14.0, *)
 private let logger = Logger(subsystem: "io.portone.sdk", category: "IssueBillingKey")
 
+@available(iOS 14.0, *)
 public struct IssueBillingKeyWebView: UIViewRepresentable {
 
   let json: String
@@ -13,15 +15,14 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
     if data["redirectUrl"] != nil {
       logger.warning("redirectUrl 파라미터는 SDK에서 자동으로 설정되므로 생략해 주세요.")
     }
-    guard let json = try? JSONSerialization.data(withJSONObject: data) else {
-      return nil
-    }
-    guard let jsonString = String(data: json, encoding: .utf8) else {
+    guard let jsonData = try? JSONSerialization.data(withJSONObject: data),
+      let jsonString = String(data: jsonData, encoding: .utf8)
+    else {
       return nil
     }
     self.json = jsonString
     self.onCompletion = { result in
-      logger.info("Billing key issuance completed: \(result)")
+      logger.debug("completed: \(String(reflecting: result))")
       onCompletion(result)
     }
   }
@@ -95,7 +96,7 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
     ) {
       if message.name == "errorHandler", let errorMessage = message.body as? String {
         logger.error("Error from webView: \(errorMessage)")
-        
+
         os_unfair_lock_lock(&lock)
         guard !isCompleted else {
           os_unfair_lock_unlock(&lock)
@@ -103,7 +104,7 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
         }
         isCompleted = true
         os_unfair_lock_unlock(&lock)
-        
+
         onCompletion(.failure(.invalidArgument(message: errorMessage)))
       }
     }
@@ -123,7 +124,7 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
       // 완료 URL 처리
       if url.absoluteString.starts(with: "https://ios-sdk.portone.io/done") {
         decisionHandler(.cancel)
-        
+
         os_unfair_lock_lock(&lock)
         guard !isCompleted else {
           os_unfair_lock_unlock(&lock)
@@ -142,7 +143,7 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
           onCompletion(
             .failure(
               .failed(code: code, message: portMessage, pgCode: pgCode, pgMessage: pgMessage)
-              ))
+            ))
         } else {
           guard let billingKey = queryItems.first(where: { $0.name == "billingKey" })?.value else {
             onCompletion(.failure(.unknown(message: "빌링키 발급 결과에서 billingKey를 찾을 수 없습니다.")))
@@ -175,7 +176,7 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
       os_unfair_lock_lock(&lock)
       let alreadyCompleted = isCompleted
       os_unfair_lock_unlock(&lock)
-      
+
       guard !alreadyCompleted else { return }
       logger.error("Navigation error: \(error)")
     }
@@ -187,7 +188,7 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
       os_unfair_lock_lock(&lock)
       let alreadyCompleted = isCompleted
       os_unfair_lock_unlock(&lock)
-      
+
       guard !alreadyCompleted else { return }
       logger.error("Content loading error: \(error)")
     }
