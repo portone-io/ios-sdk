@@ -38,7 +38,7 @@ dependencies: [
 ### Info.plist 설정
 
 앱의 `Info.plist`에 다음 설정을 추가해야 합니다.
-자세한 내용은 [SwiftExample/SwiftExample/Info.plist](SwiftExample/SwiftExample/Info.plist)에서 확인할 수 있습니다.
+자세한 내용은 [SwiftExample/SwiftExample/Info.plist](SwiftExample/SwiftExample/Info.plist) 또는 [UIKitExample/UIKitExample/Info.plist](UIKitExample/UIKitExample/Info.plist)에서 확인할 수 있습니다.
 
 1. **URL Scheme 등록** (결제 완료 후 앱으로 돌아오기 위함)
    ```xml
@@ -67,9 +67,13 @@ dependencies: [
 
 ## 사용법
 
-전체 사용 예제는 [SwiftExample/SwiftExample/ContentView.swift](SwiftExample/SwiftExample/ContentView.swift)에서 확인할 수 있습니다.
+SDK는 SwiftUI와 UIKit 모두를 지원합니다:
+- SwiftUI 예제: [SwiftExample/SwiftExample/ContentView.swift](SwiftExample/SwiftExample/ContentView.swift)
+- UIKit 예제: [UIKitExample/UIKitExample/ViewController.swift](UIKitExample/UIKitExample/ViewController.swift)
 
-### 결제
+### SwiftUI 사용법
+
+#### 결제
 
 ```swift
 import SwiftUI
@@ -111,7 +115,7 @@ struct PaymentView: View {
 }
 ```
 
-### 빌링키 발급
+#### 빌링키 발급
 
 ```swift
 import SwiftUI
@@ -148,7 +152,7 @@ struct BillingKeyView: View {
 }
 ```
 
-### 본인인증
+#### 본인인증
 
 ```swift
 import SwiftUI
@@ -185,6 +189,118 @@ struct IdentityVerificationView: View {
 }
 ```
 
+### UIKit 사용법
+
+#### 결제
+
+```swift
+import UIKit
+import PortOneSdk
+
+class PaymentViewController: UIViewController {
+    @IBAction func paymentButtonTapped(_ sender: UIButton) {
+        let paymentId = UUID().uuidString.replacingOccurrences(of: "-", with: "")
+        
+        let paymentViewController = PaymentViewController(
+            data: [
+                "storeId": "your-store-id",
+                "channelKey": "your-channel-key",
+                "paymentId": paymentId,
+                "orderName": "주문명",
+                "totalAmount": 1000,
+                "currency": "KRW",
+                "payMethod": "CARD",
+                "appScheme": "your-app-scheme://"
+            ],
+            onCompletion: { [weak self] result in
+                DispatchQueue.main.async {
+                    self?.dismiss(animated: true) {
+                        switch result {
+                        case .success(let payment):
+                            print("결제 성공: \(payment)")
+                        case .failure(let error):
+                            print("결제 실패: \(error)")
+                        }
+                    }
+                }
+            }
+        )
+        
+        present(paymentViewController, animated: true)
+    }
+}
+```
+
+#### 빌링키 발급
+
+```swift
+import UIKit
+import PortOneSdk
+
+class BillingKeyViewController: UIViewController {
+    @IBAction func billingKeyButtonTapped(_ sender: UIButton) {
+        let billingKeyViewController = IssueBillingKeyViewController(
+            data: [
+                "storeId": "your-store-id",
+                "channelKey": "your-channel-key",
+                "issueName": "빌링키 발급 테스트",
+                "billingKeyMethod": "CARD",
+                "appScheme": "your-app-scheme://"
+            ],
+            onCompletion: { [weak self] result in
+                DispatchQueue.main.async {
+                    self?.dismiss(animated: true) {
+                        switch result {
+                        case .success(let billingKey):
+                            print("빌링키 발급 성공: \(billingKey)")
+                        case .failure(let error):
+                            print("빌링키 발급 실패: \(error)")
+                        }
+                    }
+                }
+            }
+        )
+        
+        present(billingKeyViewController, animated: true)
+    }
+}
+```
+
+#### 본인인증
+
+```swift
+import UIKit
+import PortOneSdk
+
+class IdentityViewController: UIViewController {
+    @IBAction func identityVerificationButtonTapped(_ sender: UIButton) {
+        let identityVerificationId = UUID().uuidString.replacingOccurrences(of: "-", with: "")
+        
+        let identityVerificationViewController = IdentityVerificationViewController(
+            data: [
+                "storeId": "your-store-id",
+                "channelKey": "your-channel-key",
+                "identityVerificationId": identityVerificationId
+            ],
+            onCompletion: { [weak self] result in
+                DispatchQueue.main.async {
+                    self?.dismiss(animated: true) {
+                        switch result {
+                        case .success(let verification):
+                            print("본인인증 성공: \(verification)")
+                        case .failure(let error):
+                            print("본인인증 실패: \(error)")
+                        }
+                    }
+                }
+            }
+        )
+        
+        present(identityVerificationViewController, animated: true)
+    }
+}
+```
+
 
 ## 파라미터 레퍼런스
 
@@ -193,14 +309,25 @@ struct IdentityVerificationView: View {
 
 ## 예제 프로젝트
 
-`SwiftExample` 디렉토리에서 SDK 사용 예제를 확인할 수 있습니다:
+### SwiftUI 예제
+
+`SwiftExample` 디렉토리에서 SwiftUI 기반 SDK 사용 예제를 확인할 수 있습니다:
 
 ```bash
 cd SwiftExample
 open SwiftExample.xcodeproj
 ```
 
-예제를 실행하기 전에 `ContentView.swift`에서 실제 `storeId`와 `channelKey`로 변경해야 합니다.
+### UIKit 예제
+
+`UIKitExample` 디렉토리에서 UIKit 기반 SDK 사용 예제를 확인할 수 있습니다:
+
+```bash
+cd UIKitExample
+open UIKitExample.xcodeproj
+```
+
+예제를 실행하기 전에 각 프로젝트의 소스 파일에서 실제 `storeId`와 `channelKey`로 변경해야 합니다.
 
 ## 라이선스
 
