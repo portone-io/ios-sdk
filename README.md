@@ -1,3 +1,7 @@
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fportone-io%2Fios-sdk%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/portone-io/ios-sdk)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fportone-io%2Fios-sdk%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/portone-io/ios-sdk)
+[![SPM Version](https://img.shields.io/github/v/tag/portone-io/ios-sdk?label=release)](https://swiftpackageindex.com/portone-io/ios-sdk)
+
 # PortOne SDK for iOS
 
 iOS 환경에서 포트원 V2 결제 시스템에 연동하기 위한 SDK입니다.
