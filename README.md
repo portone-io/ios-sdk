@@ -45,6 +45,7 @@ dependencies: [
 자세한 내용은 [SwiftExample/SwiftExample/Info.plist](SwiftExample/SwiftExample/Info.plist) 또는 [UIKitExample/UIKitExample/Info.plist](UIKitExample/UIKitExample/Info.plist)에서 확인할 수 있습니다.
 
 1. **URL Scheme 등록** (결제 완료 후 앱으로 돌아오기 위함)
+
    ```xml
    <key>CFBundleURLTypes</key>
    <array>
@@ -72,6 +73,7 @@ dependencies: [
 ## 사용법
 
 SDK는 SwiftUI와 UIKit 모두를 지원합니다:
+
 - SwiftUI 예제: [SwiftExample/SwiftExample/ContentView.swift](SwiftExample/SwiftExample/ContentView.swift)
 - UIKit 예제: [UIKitExample/UIKitExample/ViewController.swift](UIKitExample/UIKitExample/ViewController.swift)
 
@@ -85,14 +87,14 @@ import PortOneSdk
 
 struct PaymentView: View {
     @State private var showPaymentSheet = false
-    
+
     var body: some View {
         Button("결제하기") {
             showPaymentSheet = true
         }
         .sheet(isPresented: $showPaymentSheet) {
             let paymentId = UUID().uuidString.replacingOccurrences(of: "-", with: "")
-            
+
             PaymentWebView(
                 data: [
                     "storeId": "your-store-id",
@@ -102,7 +104,12 @@ struct PaymentView: View {
                     "totalAmount": 1000,
                     "currency": "KRW",
                     "payMethod": "CARD",
-                    "appScheme": "your-app-scheme://"
+                    "appScheme": "your-app-scheme://",
+                    "customer": [
+                        "fullName": "포트원",
+                        "phoneNumber": "01012341234",
+                        "email": "buyer@example.com"
+                    ]
                 ],
                 onCompletion: { result in
                     switch result {
@@ -127,7 +134,7 @@ import PortOneSdk
 
 struct BillingKeyView: View {
     @State private var showIssueBillingKeySheet = false
-    
+
     var body: some View {
         Button("빌링키 발급") {
             showIssueBillingKeySheet = true
@@ -139,7 +146,12 @@ struct BillingKeyView: View {
                     "channelKey": "your-channel-key",
                     "issueName": "빌링키 발급 테스트",
                     "billingKeyMethod": "CARD",
-                    "appScheme": "your-app-scheme://"
+                    "appScheme": "your-app-scheme://",
+                    "customer": [
+                        "fullName": "포트원",
+                        "phoneNumber": "01012341234",
+                        "email": "buyer@example.com"
+                    ]
                 ],
                 onCompletion: { result in
                     switch result {
@@ -164,14 +176,14 @@ import PortOneSdk
 
 struct IdentityVerificationView: View {
     @State private var showIdentityVerificationSheet = false
-    
+
     var body: some View {
         Button("본인인증") {
             showIdentityVerificationSheet = true
         }
         .sheet(isPresented: $showIdentityVerificationSheet) {
             let identityVerificationId = UUID().uuidString.replacingOccurrences(of: "-", with: "")
-            
+
             IdentityVerificationWebView(
                 data: [
                     "storeId": "your-store-id",
@@ -204,7 +216,7 @@ import PortOneSdk
 class PaymentViewController: UIViewController {
     @IBAction func paymentButtonTapped(_ sender: UIButton) {
         let paymentId = UUID().uuidString.replacingOccurrences(of: "-", with: "")
-        
+
         let paymentViewController = PaymentViewController(
             data: [
                 "storeId": "your-store-id",
@@ -214,7 +226,12 @@ class PaymentViewController: UIViewController {
                 "totalAmount": 1000,
                 "currency": "KRW",
                 "payMethod": "CARD",
-                "appScheme": "your-app-scheme://"
+                "appScheme": "your-app-scheme://",
+                "customer": [
+                    "fullName": "포트원",
+                    "phoneNumber": "01012341234",
+                    "email": "buyer@example.com"
+                ]
             ],
             onCompletion: { [weak self] result in
                 DispatchQueue.main.async {
@@ -229,7 +246,7 @@ class PaymentViewController: UIViewController {
                 }
             }
         )
-        
+
         present(paymentViewController, animated: true)
     }
 }
@@ -249,7 +266,12 @@ class BillingKeyViewController: UIViewController {
                 "channelKey": "your-channel-key",
                 "issueName": "빌링키 발급 테스트",
                 "billingKeyMethod": "CARD",
-                "appScheme": "your-app-scheme://"
+                "appScheme": "your-app-scheme://",
+                "customer": [
+                    "fullName": "포트원",
+                    "phoneNumber": "01012341234",
+                    "email": "buyer@example.com"
+                ]
             ],
             onCompletion: { [weak self] result in
                 DispatchQueue.main.async {
@@ -264,7 +286,7 @@ class BillingKeyViewController: UIViewController {
                 }
             }
         )
-        
+
         present(billingKeyViewController, animated: true)
     }
 }
@@ -279,7 +301,7 @@ import PortOneSdk
 class IdentityViewController: UIViewController {
     @IBAction func identityVerificationButtonTapped(_ sender: UIButton) {
         let identityVerificationId = UUID().uuidString.replacingOccurrences(of: "-", with: "")
-        
+
         let identityVerificationViewController = IdentityVerificationViewController(
             data: [
                 "storeId": "your-store-id",
@@ -299,16 +321,15 @@ class IdentityViewController: UIViewController {
                 }
             }
         )
-        
+
         present(identityVerificationViewController, animated: true)
     }
 }
 ```
 
-
 ## 파라미터 레퍼런스
 
-결제, 빌링키 발급, 본인인증의 상세 파라미터는 [포트원 개발자 문서](https://developers.portone.io/sdk/ko/v2-sdk/readme)를 참조하세요.
+결제, 빌링키 발급, 본인인증의 상세 파라미터는 [포트원 개발자 문서](https://developers.portone.io/sdk/ko/v2-sdk/readme)의 각 요청 형식을 따라 dictionary 형태로 전달하시면 됩니다.
 단, `redirectUrl` 파라미터의 경우 결제 결과를 받아오기 위해 SDK가 자동 입력하므로 무시됩니다.
 
 ## 예제 프로젝트
