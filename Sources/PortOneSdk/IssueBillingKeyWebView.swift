@@ -36,6 +36,8 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
 
     let webView = WKWebView(frame: .zero, configuration: configuration)
     webView.navigationDelegate = context.coordinator
+    webView.uiDelegate = context.coordinator
+
     #if DEBUG
       if #available(iOS 16.4, *) {
         webView.isInspectable = true
@@ -80,7 +82,7 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
 
   // MARK: - Coordinator
 
-  public class Coordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
+  public class Coordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate {
     var onCompletion: (IssueBillingKeyResult) -> Void
     private var isCompleted = false  // onCompletion이 중복 호출되는 것을 방지
     private var lock = os_unfair_lock()
@@ -191,6 +193,14 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
 
       guard !alreadyCompleted else { return }
       logger.error("Content loading error: \(error)")
+    }
+
+    public func webView(
+      _ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String,
+      initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping @MainActor (Bool) -> Void
+    ) {
+      logger.info("Confirm dialog by: \(frame)")
+      showWebViewConfirmAlertPanel(message: message, completionHandler: completionHandler)
     }
   }
 }
