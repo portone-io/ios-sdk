@@ -1,5 +1,11 @@
 # PortOneSdk
 
+## 0.1.3
+
+### Patch Changes
+
+- 625f694: Swift 6.0 문법에 맞지 않던 부분 수정
+
 ## 0.1.2
 
 ### Patch Changes
