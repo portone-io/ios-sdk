@@ -30,7 +30,7 @@ func showWebViewConfirmAlertPanel(
     let alert = UIAlertController(
       title: nil,
       message: message,
-      preferredStyle: .alert,
+      preferredStyle: .alert
     )
     let okAction = UIAlertAction(
       title: "OK",
