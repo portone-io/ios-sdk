@@ -84,18 +84,20 @@ struct ContentView: View {
       },
       content: {
         let paymentId = UUID().uuidString.replacingOccurrences(of: "-", with: "")
+          
+        let request = PaymentRequest(
+            storeId: storeId,
+            paymentId: paymentId,
+            orderName: "결제 테스트",
+            totalAmount: 1000,
+            currency: Currency.KRW,
+            payMethod: PaymentPayMethod.CARD,
+            channelKey: channelKey,
+            appScheme: "portoneexample://"
+        )
 
         PaymentWebView(
-          data: [
-            "storeId": storeId,
-            "paymentId": paymentId,
-            "orderName": "결제 테스트",
-            "totalAmount": 1000,
-            "currency": "KRW",
-            "channelKey": channelKey,
-            "payMethod": "CARD",
-            "appScheme": "portoneexample://",
-          ],
+          request: request,
           onCompletion: { result in
             DispatchQueue.main.async {
               paymentResult = result
@@ -125,14 +127,16 @@ struct ContentView: View {
         }
       },
       content: {
+        let request = IssueBillingKeyRequest(
+          storeId: storeId,
+          channelKey: channelKey,
+          billingKeyMethod: BillingKeyMethod.CARD,
+          issueName: "빌링키 발급 테스트",
+          appScheme: "portoneexample://"
+        )
+
         IssueBillingKeyWebView(
-          data: [
-            "storeId": storeId,
-            "issueName": "빌링키 발급 테스트",
-            "channelKey": channelKey,
-            "billingKeyMethod": "CARD",
-            "appScheme": "portoneexample://",
-          ],
+          request: request,
           onCompletion: { result in
             DispatchQueue.main.async {
               issueBillingKeyResult = result
@@ -166,13 +170,14 @@ struct ContentView: View {
       },
       content: {
         let identityVerificationId = UUID().uuidString.replacingOccurrences(of: "-", with: "")
+        let request = IdentityVerificationRequest(
+          storeId: storeId,
+          identityVerificationId: identityVerificationId,
+          channelKey: channelKey
+        )
 
         IdentityVerificationWebView(
-          data: [
-            "storeId": storeId,
-            "identityVerificationId": identityVerificationId,
-            "channelKey": channelKey,
-          ],
+          request: request,
           onCompletion: { result in
             DispatchQueue.main.async {
               identityVerificationResult = result

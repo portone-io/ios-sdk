@@ -39,18 +39,19 @@ class ViewController: UIViewController {
 
   @IBAction func paymentButtonTapped(_ sender: UIButton) {
     let paymentId = UUID().uuidString.replacingOccurrences(of: "-", with: "")
+    let request = PaymentRequest(
+      storeId: storeId,
+      paymentId: paymentId,
+      orderName: "결제 테스트",
+      totalAmount: 1000,
+      currency: Currency.KRW,
+      payMethod: PaymentPayMethod.CARD,
+      channelKey: channelKey,
+      appScheme: "portoneexample://"
+    )
 
     let paymentViewController = PaymentViewController(
-      data: [
-        "storeId": storeId,
-        "paymentId": paymentId,
-        "orderName": "결제 테스트",
-        "totalAmount": 1000,
-        "currency": "KRW",
-        "channelKey": channelKey,
-        "payMethod": "CARD",
-        "appScheme": "portoneexample://",
-      ],
+      request: request,
       onCompletion: { [weak self] result in
         DispatchQueue.main.async {
           self?.paymentResult = result
@@ -65,14 +66,16 @@ class ViewController: UIViewController {
   }
 
   @IBAction func billingKeyButtonTapped(_ sender: UIButton) {
+    let request = IssueBillingKeyRequest(
+      storeId: storeId,
+      channelKey: channelKey,
+      billingKeyMethod: BillingKeyMethod.CARD,
+      issueName: "빌링키 발급 테스트",
+      appScheme: "portoneexample://"
+    )
+
     let billingKeyViewController = IssueBillingKeyViewController(
-      data: [
-        "storeId": storeId,
-        "issueName": "빌링키 발급 테스트",
-        "channelKey": channelKey,
-        "billingKeyMethod": "CARD",
-        "appScheme": "portoneexample://",
-      ],
+      request: request,
       onCompletion: { [weak self] result in
         DispatchQueue.main.async {
           self?.issueBillingKeyResult = result
@@ -88,13 +91,14 @@ class ViewController: UIViewController {
 
   @IBAction func identityVerificationButtonTapped(_ sender: UIButton) {
     let identityVerificationId = UUID().uuidString.replacingOccurrences(of: "-", with: "")
+    let request = IdentityVerificationRequest(
+      storeId: storeId,
+      identityVerificationId: identityVerificationId,
+      channelKey: channelKey
+    )
 
-    let identityVerificationWebView = IdentityVerificationViewController(
-      data: [
-        "storeId": storeId,
-        "identityVerificationId": identityVerificationId,
-        "channelKey": channelKey,
-      ],
+    let identityVerificationViewController = IdentityVerificationViewController(
+      request: request,
       onCompletion: { [weak self] result in
         DispatchQueue.main.async {
           self?.identityVerificationResult = result
@@ -105,7 +109,7 @@ class ViewController: UIViewController {
       }
     )
 
-    present(identityVerificationWebView, animated: true)
+    present(identityVerificationViewController, animated: true)
   }
 
   func handlePaymentResult() {
