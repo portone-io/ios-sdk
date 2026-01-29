@@ -11,16 +11,10 @@ public struct IdentityVerificationWebView: UIViewRepresentable {
   let json: String
   let onCompletion: (IdentityVerificationResult) -> Void
 
-  public init?(data: [String: Any], onCompletion: @escaping (IdentityVerificationResult) -> Void) {
-    if data["redirectUrl"] != nil {
-      logger.warning("redirectUrl 파라미터는 SDK에서 자동으로 설정되므로 생략해 주세요.")
-    }
-    guard let jsonData = try? JSONSerialization.data(withJSONObject: data),
-      let jsonString = String(data: jsonData, encoding: .utf8)
-    else {
-      return nil
-    }
-    self.json = jsonString
+  public init(request: IdentityVerificationRequest, onCompletion: @escaping (IdentityVerificationResult) -> Void) {
+    let encoder = JSONEncoder()
+    let data = try! encoder.encode(request)
+    self.json = String(data: data, encoding: .utf8)!
     self.onCompletion = { result in
       logger.debug("completed: \(String(reflecting: result))")
       onCompletion(result)

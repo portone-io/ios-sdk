@@ -3,12 +3,12 @@ import UIKit
 
 @available(iOS 14.0, *)
 public class IdentityVerificationViewController: UIViewController {
-  private let data: [String: Any]
+  private let request: IdentityVerificationRequest
   private let onCompletion: (IdentityVerificationResult) -> Void
   private var hostingController: UIHostingController<IdentityVerificationWebView>?
 
-  public init(data: [String: Any], onCompletion: @escaping (IdentityVerificationResult) -> Void) {
-    self.data = data
+  public init(request: IdentityVerificationRequest, onCompletion: @escaping (IdentityVerificationResult) -> Void) {
+    self.request = request
     self.onCompletion = onCompletion
     super.init(nibName: nil, bundle: nil)
   }
@@ -23,12 +23,8 @@ public class IdentityVerificationViewController: UIViewController {
   }
 
   private func setupIdentityVerificationWebView() {
-    guard
-      let identityVerificationWebView = IdentityVerificationWebView(
-        data: data, onCompletion: onCompletion)
-    else {
-      return
-    }
+    let identityVerificationWebView = IdentityVerificationWebView(
+      request: request, onCompletion: onCompletion)
     let hostingController = UIHostingController(rootView: identityVerificationWebView)
 
     addChild(hostingController)

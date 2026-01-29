@@ -3,12 +3,12 @@ import UIKit
 
 @available(iOS 14.0, *)
 public class IssueBillingKeyViewController: UIViewController {
-  private let data: [String: Any]
+  private let request: IssueBillingKeyRequest
   private let onCompletion: (IssueBillingKeyResult) -> Void
   private var hostingController: UIHostingController<IssueBillingKeyWebView>?
 
-  public init(data: [String: Any], onCompletion: @escaping (IssueBillingKeyResult) -> Void) {
-    self.data = data
+  public init(request: IssueBillingKeyRequest, onCompletion: @escaping (IssueBillingKeyResult) -> Void) {
+    self.request = request
     self.onCompletion = onCompletion
     super.init(nibName: nil, bundle: nil)
   }
@@ -23,11 +23,7 @@ public class IssueBillingKeyViewController: UIViewController {
   }
 
   private func setupIssueBillingKeyWebView() {
-    guard
-      let issueBillingKeyWebView = IssueBillingKeyWebView(data: data, onCompletion: onCompletion)
-    else {
-      return
-    }
+    let issueBillingKeyWebView = IssueBillingKeyWebView(request: request, onCompletion: onCompletion)
     let hostingController = UIHostingController(rootView: issueBillingKeyWebView)
 
     addChild(hostingController)

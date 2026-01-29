@@ -3,12 +3,12 @@ import UIKit
 
 @available(iOS 14.0, *)
 public class PaymentViewController: UIViewController {
-  private let data: [String: Any]
+  private let request: PaymentRequest
   private let onCompletion: (PaymentResult) -> Void
   private var hostingController: UIHostingController<PaymentWebView>?
 
-  public init(data: [String: Any], onCompletion: @escaping (PaymentResult) -> Void) {
-    self.data = data
+  public init(request: PaymentRequest, onCompletion: @escaping (PaymentResult) -> Void) {
+    self.request = request
     self.onCompletion = onCompletion
     super.init(nibName: nil, bundle: nil)
   }
@@ -23,10 +23,7 @@ public class PaymentViewController: UIViewController {
   }
 
   private func setupPaymentWebView() {
-    guard let paymentWebView = PaymentWebView(data: data, onCompletion: onCompletion)
-    else {
-      return
-    }
+    let paymentWebView = PaymentWebView(request: request, onCompletion: onCompletion)
     let hostingController = UIHostingController(rootView: paymentWebView)
 
     addChild(hostingController)
