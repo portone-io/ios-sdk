@@ -11,10 +11,19 @@ public struct PaymentWebView: UIViewRepresentable {
   let json: String
   let onCompletion: (PaymentResult) -> Void
 
-  public init(request: PaymentRequest, onCompletion: @escaping (PaymentResult) -> Void) {
+  public init?(request: PaymentRequest, onCompletion: @escaping (PaymentResult) -> Void) {
     let encoder = JSONEncoder()
-    let data = try! encoder.encode(request)
-    self.json = String(data: data, encoding: .utf8)!
+    do {
+      let data = try encoder.encode(request)
+      guard let json = String(data: data, encoding: .utf8) else {
+        logger.error("Failed to convert encoded data to UTF-8 string")
+        return nil
+      }
+      self.json = json
+    } catch {
+      logger.error("Failed to encode PaymentRequest: \(error)")
+      return nil
+    }
     self.onCompletion = { result in
       logger.debug("completed: \(String(reflecting: result))")
       onCompletion(result)

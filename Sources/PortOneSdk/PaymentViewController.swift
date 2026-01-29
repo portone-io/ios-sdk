@@ -23,7 +23,9 @@ public class PaymentViewController: UIViewController {
   }
 
   private func setupPaymentWebView() {
-    let paymentWebView = PaymentWebView(request: request, onCompletion: onCompletion)
+    guard let paymentWebView = PaymentWebView(request: request, onCompletion: onCompletion) else {
+      return
+    }
     let hostingController = UIHostingController(rootView: paymentWebView)
 
     addChild(hostingController)

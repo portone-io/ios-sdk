@@ -11,10 +11,19 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
   let json: String
   let onCompletion: (IssueBillingKeyResult) -> Void
 
-  public init(request: IssueBillingKeyRequest, onCompletion: @escaping (IssueBillingKeyResult) -> Void) {
+  public init?(request: IssueBillingKeyRequest, onCompletion: @escaping (IssueBillingKeyResult) -> Void) {
     let encoder = JSONEncoder()
-    let data = try! encoder.encode(request)
-    self.json = String(data: data, encoding: .utf8)!
+    do {
+      let data = try encoder.encode(request)
+      guard let json = String(data: data, encoding: .utf8) else {
+        logger.error("Failed to convert encoded data to UTF-8 string")
+        return nil
+      }
+      self.json = json
+    } catch {
+      logger.error("Failed to encode IssueBillingKeyRequest: \(error)")
+      return nil
+    }
     self.onCompletion = { result in
       logger.debug("completed: \(String(reflecting: result))")
       onCompletion(result)

@@ -23,8 +23,10 @@ public class IdentityVerificationViewController: UIViewController {
   }
 
   private func setupIdentityVerificationWebView() {
-    let identityVerificationWebView = IdentityVerificationWebView(
-      request: request, onCompletion: onCompletion)
+    guard let identityVerificationWebView = IdentityVerificationWebView(
+      request: request, onCompletion: onCompletion) else {
+      return
+    }
     let hostingController = UIHostingController(rootView: identityVerificationWebView)
 
     addChild(hostingController)

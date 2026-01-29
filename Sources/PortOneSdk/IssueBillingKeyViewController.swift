@@ -23,7 +23,9 @@ public class IssueBillingKeyViewController: UIViewController {
   }
 
   private func setupIssueBillingKeyWebView() {
-    let issueBillingKeyWebView = IssueBillingKeyWebView(request: request, onCompletion: onCompletion)
+    guard let issueBillingKeyWebView = IssueBillingKeyWebView(request: request, onCompletion: onCompletion) else {
+      return
+    }
     let hostingController = UIHostingController(rootView: issueBillingKeyWebView)
 
     addChild(hostingController)
