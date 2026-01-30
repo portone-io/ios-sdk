@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6D4FCDE2F2B6A3400070309 /* PortOneSdk in Frameworks */ = {isa = PBXBuildFile; productRef = A6D4FCDD2F2B6A3400070309 /* PortOneSdk */; };
 		CF394DA92E0BCB2F005C1E4B /* PortOneSdk in Frameworks */ = {isa = PBXBuildFile; productRef = CF394DA82E0BCB2F005C1E4B /* PortOneSdk */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF394DA92E0BCB2F005C1E4B /* PortOneSdk in Frameworks */,
+				A6D4FCDE2F2B6A3400070309 /* PortOneSdk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +94,7 @@
 			name = UIKitExample;
 			packageProductDependencies = (
 				CF394DA82E0BCB2F005C1E4B /* PortOneSdk */,
+				A6D4FCDD2F2B6A3400070309 /* PortOneSdk */,
 			);
 			productName = UIKitExample;
 			productReference = CF394D892E0BC704005C1E4B /* UIKitExample.app */;
@@ -122,7 +125,7 @@
 			mainGroup = CF394D802E0BC704005C1E4B;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				CF394DA72E0BCB2F005C1E4B /* XCLocalSwiftPackageReference "../../IosSdk" */,
+				A6D4FCDC2F2B6A3300070309 /* XCLocalSwiftPackageReference "../" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CF394D8A2E0BC704005C1E4B /* Products */;
@@ -354,13 +357,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		CF394DA72E0BCB2F005C1E4B /* XCLocalSwiftPackageReference "../../IosSdk" */ = {
+		A6D4FCDC2F2B6A3300070309 /* XCLocalSwiftPackageReference "../" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../IosSdk;
+			relativePath = "../";
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A6D4FCDD2F2B6A3400070309 /* PortOneSdk */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PortOneSdk;
+		};
 		CF394DA82E0BCB2F005C1E4B /* PortOneSdk */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PortOneSdk;
