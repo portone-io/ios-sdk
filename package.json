@@ -1,6 +1,6 @@
 {
   "name": "PortOneSdk",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "PortOne SDK for iOS",
   "license": "ISC",
   "packageManager": "pnpm@10.11.0",
