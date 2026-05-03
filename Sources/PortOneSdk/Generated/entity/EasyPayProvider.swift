@@ -130,4 +130,60 @@ public enum EasyPayProvider: String, Codable {
     /// 
     /// - KG이니시스 JPPG 일본결제
     case MERPAY
+    /// Alipay
+    /// 
+    /// - KICC V2 알리페이 플러스
+    case ALIPAY
+    /// Alipay (HK)
+    /// 
+    /// - KICC V2 알리페이 플러스
+    case ALIPAY_HK
+    /// TrueMoney
+    /// 
+    /// - KICC V2 알리페이 플러스
+    case TRUE_MONEY
+    /// Touch'n Go eWallet
+    /// 
+    /// - KICC V2 알리페이 플러스
+    case TOUCH_N_GO
+    /// GCash
+    /// 
+    /// - KICC V2 알리페이 플러스
+    case GCASH
+    /// DANA
+    /// 
+    /// - KICC V2 알리페이 플러스
+    case DANA
+    /// Rabbit LINE Pay
+    /// 
+    /// - KICC V2 알리페이 플러스
+    case RABBIT_LINE_PAY
+    /// BPI (Bank of the Philippine Islands)
+    /// 
+    /// - KICC V2 알리페이 플러스
+    case BPI
+    /// Boost
+    /// 
+    /// - KICC V2 알리페이 플러스
+    case BOOST
+    /// BillEase
+    /// 
+    /// - KICC V2 알리페이 플러스
+    case BILL_EASE
+    /// Tinaba
+    /// 
+    /// - KICC V2 알리페이 플러스
+    case TINABA
+    /// MPay
+    /// 
+    /// - KICC V2 알리페이 플러스
+    case MPAY
+    /// Kredivo
+    /// 
+    /// - KICC V2 알리페이 플러스
+    case KREDIVO
+    /// WeChat Pay
+    /// 
+    /// - KICC V2 알리페이 플러스
+    case WECHAT
 }

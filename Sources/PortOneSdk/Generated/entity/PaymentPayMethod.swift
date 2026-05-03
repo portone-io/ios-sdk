@@ -27,4 +27,6 @@ public enum PaymentPayMethod: String, Codable {
     case ALIPAY
     /// 편의점 결제
     case CONVENIENCE_STORE
+    /// 알리페이 플러스
+    case ALIPAY_PLUS
 }

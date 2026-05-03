@@ -5,7 +5,7 @@ import Foundation
 
 /// **UI 언어**
 /// 
-/// KG이니시스, 스마트로, KSNET, 웰컴페이먼츠 (PC), 한국결제네트웍스, 엑심베이, Triple-A에서 설정 가능하며, PG마다 지원하는 언어 목록은 차이가 있습니다.
+/// KG이니시스, 스마트로, KSNET, 웰컴페이먼츠 (PC), 한국결제네트웍스, 엑심베이, Triple-A, 페이먼트월에서 설정 가능하며, PG마다 지원하는 언어 목록은 차이가 있습니다.
 public enum PortOneLocale: String, Codable {
     /// 한국어
     /// 
@@ -15,6 +15,7 @@ public enum PortOneLocale: String, Codable {
     /// - 웰컴페이먼츠 (PC)
     /// - 한국결제네트웍스
     /// - 엑심베이
+    /// - 페이먼트월
     case KO_KR
     /// 영어
     /// 
@@ -25,6 +26,7 @@ public enum PortOneLocale: String, Codable {
     /// - 한국결제네트웍스
     /// - 엑심베이
     /// - Triple-A
+    /// - 페이먼트월
     case EN_US
     /// 중국어 (중국 본토)
     /// 
@@ -32,29 +34,35 @@ public enum PortOneLocale: String, Codable {
     /// - 웰컴페이먼츠 (PC)
     /// - 엑심베이
     /// - Triple-A
+    /// - 페이먼트월
     case ZH_CN
     /// 중국어 (대만)
     /// 
     /// - 엑심베이
     /// - Triple-A
+    /// - 페이먼트월
     case ZH_TW
     /// 일본어
     /// 
     /// - 엑심베이
     /// - Triple-A
+    /// - 페이먼트월
     case JA_JP
     /// 러시아어
     /// 
     /// - 엑심베이
     /// - Triple-A
+    /// - 페이먼트월
     case RU_RU
     /// 타이어
     /// 
     /// - 엑심베이
+    /// - 페이먼트월
     case TH_TH
     /// 베트남어
     /// 
     /// - 엑심베이
+    /// - 페이먼트월
     case VI_VN
     /// 인도네시아어
     /// 
@@ -63,33 +71,92 @@ public enum PortOneLocale: String, Codable {
     /// 프랑스어
     /// 
     /// - Triple-A
+    /// - 페이먼트월
     case FR_FR
     /// 네덜란드어
     /// 
     /// - Triple-A
+    /// - 페이먼트월
     case NL_NL
     /// 에스파냐어
     /// 
     /// - Triple-A
+    /// - 페이먼트월
     case ES_ES
     /// 포르투갈어
     /// 
     /// - Triple-A
+    /// - 페이먼트월
     case PT_PT
     /// 독일어
     /// 
     /// - Triple-A
+    /// - 페이먼트월
     case DE_DE
     /// 이탈리아어
     /// 
     /// - Triple-A
+    /// - 페이먼트월
     case IT_IT
     /// 폴란드어
     /// 
     /// - Triple-A
+    /// - 페이먼트월
     case PL_PL
     /// 현대 표준 아랍어
     /// 
     /// - Triple-A
     case AR_001
+    /// 튀르키예어
+    /// 
+    /// - 페이먼트월
+    case TR_TR
+    /// 스웨덴어
+    /// 
+    /// - 페이먼트월
+    case SV_SE
+    /// 핀란드어
+    /// 
+    /// - 페이먼트월
+    case FI_FI
+    /// 우크라이나어
+    /// 
+    /// - 페이먼트월
+    case UK_UA
+    /// 그리스어
+    /// 
+    /// - 페이먼트월
+    case EL_GR
+    /// 타갈로그어
+    /// 
+    /// - 페이먼트월
+    case TL_PH
+    /// 힌디어
+    /// 
+    /// - 페이먼트월
+    case HI_IN
+    /// 크로아티아어
+    /// 
+    /// - 페이먼트월
+    case HR_HR
+    /// 리투아니아어
+    /// 
+    /// - 페이먼트월
+    case LT_LT
+    /// 슬로베니아어
+    /// 
+    /// - 페이먼트월
+    case SL_SI
+    /// 세르비아어
+    /// 
+    /// - 페이먼트월
+    case SR_RS
+    /// 불가리아어
+    /// 
+    /// - 페이먼트월
+    case BG_BG
+    /// 포르투갈어 (브라질)
+    /// 
+    /// - 페이먼트월
+    case PT_BR
 }

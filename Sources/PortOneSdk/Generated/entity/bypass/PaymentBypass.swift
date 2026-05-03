@@ -47,6 +47,8 @@ public struct PaymentBypass: Codable {
     public let mobiliansV2: MobiliansV2Bypass?
     /// Triple-A bypass 파라미터
     public let tripleA: TripleABypass?
+    /// Paymentwall bypass 파라미터
+    public let paymentwall: PaymentwallBypass?
 
     private enum CodingKeys: String, CodingKey {
         case tosspayments
@@ -69,9 +71,10 @@ public struct PaymentBypass: Codable {
         case payletterGlobal = "payletter_global"
         case mobiliansV2 = "mobilians_v2"
         case tripleA = "triple_a"
+        case paymentwall
     }
 
-    public init(tosspayments: TosspaymentsPaymentBypass? = nil, niceV2: NiceV2PaymentBypass? = nil, paypalV2: PaypalV2PaymentBypass? = nil, inicisV2: InicisV2Bypass? = nil, kcpV2: KcpV2Bypass? = nil, smartroV2: SmartroV2PaymentBypass? = nil, ksnet: KsnetPaymentBypass? = nil, welcome: WelcomePaymentBypass? = nil, kpn: KpnBypass? = nil, naverpay: NaverpayPaymentBypass? = nil, kakaopay: KakaopayPaymentBypass? = nil, tosspayV2: TosspayV2PaymentBypass? = nil, tossBrandpay: TossBrandpayPaymentBypass? = nil, hyphen: HyphenBypass? = nil, eximbayV2: EximbayV2Bypass? = nil, galaxia: GalaxiaPaymentBypass? = nil, inicisJp: InicisJpBypass? = nil, payletterGlobal: PayletterGlobalBypass? = nil, mobiliansV2: MobiliansV2Bypass? = nil, tripleA: TripleABypass? = nil) {
+    public init(tosspayments: TosspaymentsPaymentBypass? = nil, niceV2: NiceV2PaymentBypass? = nil, paypalV2: PaypalV2PaymentBypass? = nil, inicisV2: InicisV2Bypass? = nil, kcpV2: KcpV2Bypass? = nil, smartroV2: SmartroV2PaymentBypass? = nil, ksnet: KsnetPaymentBypass? = nil, welcome: WelcomePaymentBypass? = nil, kpn: KpnBypass? = nil, naverpay: NaverpayPaymentBypass? = nil, kakaopay: KakaopayPaymentBypass? = nil, tosspayV2: TosspayV2PaymentBypass? = nil, tossBrandpay: TossBrandpayPaymentBypass? = nil, hyphen: HyphenBypass? = nil, eximbayV2: EximbayV2Bypass? = nil, galaxia: GalaxiaPaymentBypass? = nil, inicisJp: InicisJpBypass? = nil, payletterGlobal: PayletterGlobalBypass? = nil, mobiliansV2: MobiliansV2Bypass? = nil, tripleA: TripleABypass? = nil, paymentwall: PaymentwallBypass? = nil) {
         self.tosspayments = tosspayments
         self.niceV2 = niceV2
         self.paypalV2 = paypalV2
@@ -92,5 +95,6 @@ public struct PaymentBypass: Codable {
         self.payletterGlobal = payletterGlobal
         self.mobiliansV2 = mobiliansV2
         self.tripleA = tripleA
+        self.paymentwall = paymentwall
     }
 }
