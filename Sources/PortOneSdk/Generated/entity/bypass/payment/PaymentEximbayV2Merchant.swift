@@ -4,7 +4,7 @@
 import Foundation
 
 /// 상점 정보
-public struct EximbayV2Merchant: Codable {
+public struct PaymentEximbayV2Merchant: Codable {
     /// 상점명
     public let shop: String?
     /// 파트너 코드

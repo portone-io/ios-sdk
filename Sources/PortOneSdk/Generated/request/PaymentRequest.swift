@@ -16,6 +16,8 @@ public struct PaymentRequest: Codable {
     public let paymentId: String
     /// **주문명**
     public let orderName: String
+    /// **주문 상세 내용**
+    public let orderDetail: String?
     /// **결제 금액**
     /// 
     /// 결제 금액을 정수로 나타냅니다.
@@ -110,7 +112,7 @@ public struct PaymentRequest: Codable {
     public let isCulturalExpense: Bool?
     /// **UI 언어**
     /// 
-    /// KG이니시스, 스마트로, KSNET, 웰컴페이먼츠 (PC), 한국결제네트웍스, 엑심베이, Triple-A에서 설정 가능하며, PG마다 지원하는 언어 목록은 차이가 있습니다.
+    /// KG이니시스, 스마트로, KSNET, 웰컴페이먼츠 (PC), 한국결제네트웍스, 엑심베이, Triple-A, 페이먼트월에서 설정 가능하며, PG마다 지원하는 언어 목록은 차이가 있습니다.
     public let locale: PortOneLocale?
     /// **결제 정보에 포함할 고객사 커스텀 JSON 데이터**
     public let customData: JSONValue?
@@ -195,11 +197,13 @@ public struct PaymentRequest: Codable {
     public let paypal: PaymentRequestUnionPaypal?
     public let alipay: PaymentRequestUnionAlipay?
     public let convenienceStore: PaymentRequestUnionConvenienceStore?
+    public let alipayPlus: PaymentRequestUnionAlipayPlus
 
-    public init(storeId: String, paymentId: String, orderName: String, totalAmount: Int, currency: Currency, payMethod: PaymentPayMethod, channelKey: String? = nil, channelGroupId: String? = nil, taxFreeAmount: Int? = nil, vatAmount: Int? = nil, customer: Customer? = nil, windowType: WindowTypes? = nil, forceRedirect: Bool? = nil, noticeUrls: [String]? = nil, confirmUrl: String? = nil, appScheme: String? = nil, isEscrow: Bool? = nil, products: [Product]? = nil, isCulturalExpense: Bool? = nil, locale: PortOneLocale? = nil, customData: JSONValue? = nil, country: Country? = nil, productType: ProductType? = nil, offerPeriod: OfferPeriod? = nil, storeDetails: StoreDetails? = nil, shippingAddress: Address? = nil, promotionId: String? = nil, popup: Popup? = nil, iframe: Iframe? = nil, bypass: PaymentBypass? = nil, card: PaymentRequestUnionCard? = nil, virtualAccount: PaymentRequestUnionVirtualAccount? = nil, transfer: PaymentRequestUnionTransfer? = nil, mobile: PaymentRequestUnionMobile? = nil, giftCertificate: PaymentRequestUnionGiftCertificate? = nil, easyPay: PaymentRequestUnionEasyPay? = nil, paypal: PaymentRequestUnionPaypal? = nil, alipay: PaymentRequestUnionAlipay? = nil, convenienceStore: PaymentRequestUnionConvenienceStore? = nil) {
+    public init(storeId: String, paymentId: String, orderName: String, orderDetail: String? = nil, totalAmount: Int, currency: Currency, payMethod: PaymentPayMethod, channelKey: String? = nil, channelGroupId: String? = nil, taxFreeAmount: Int? = nil, vatAmount: Int? = nil, customer: Customer? = nil, windowType: WindowTypes? = nil, forceRedirect: Bool? = nil, noticeUrls: [String]? = nil, confirmUrl: String? = nil, appScheme: String? = nil, isEscrow: Bool? = nil, products: [Product]? = nil, isCulturalExpense: Bool? = nil, locale: PortOneLocale? = nil, customData: JSONValue? = nil, country: Country? = nil, productType: ProductType? = nil, offerPeriod: OfferPeriod? = nil, storeDetails: StoreDetails? = nil, shippingAddress: Address? = nil, promotionId: String? = nil, popup: Popup? = nil, iframe: Iframe? = nil, bypass: PaymentBypass? = nil, card: PaymentRequestUnionCard? = nil, virtualAccount: PaymentRequestUnionVirtualAccount? = nil, transfer: PaymentRequestUnionTransfer? = nil, mobile: PaymentRequestUnionMobile? = nil, giftCertificate: PaymentRequestUnionGiftCertificate? = nil, easyPay: PaymentRequestUnionEasyPay? = nil, paypal: PaymentRequestUnionPaypal? = nil, alipay: PaymentRequestUnionAlipay? = nil, convenienceStore: PaymentRequestUnionConvenienceStore? = nil, alipayPlus: PaymentRequestUnionAlipayPlus) {
         self.storeId = storeId
         self.paymentId = paymentId
         self.orderName = orderName
+        self.orderDetail = orderDetail
         self.totalAmount = totalAmount
         self.currency = currency
         self.payMethod = payMethod
@@ -236,5 +240,6 @@ public struct PaymentRequest: Codable {
         self.paypal = paypal
         self.alipay = alipay
         self.convenienceStore = convenienceStore
+        self.alipayPlus = alipayPlus
     }
 }

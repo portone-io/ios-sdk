@@ -3,23 +3,23 @@
 
 import Foundation
 
-/// 배송지 정보
-public struct EximbayV2ShipTo: Codable {
-    /// 배송지 도시
+/// 청구지 정보
+public struct PaymentEximbayV2BillTo: Codable {
+    /// 청구지 도시
     public let city: String?
-    /// 배송지 국가 (ISO 3166 두 자리 국가 코드)
+    /// 청구지 국가 (ISO 3166 두 자리 국가 코드)
     public let country: String?
-    /// 수신인의 성을 제외한 이름
+    /// 청구 카드 명의자의 성을 제외한 이름
     public let firstName: String?
-    /// 수신인의 성
+    /// 청구 카드 명의자의 성
     public let lastName: String?
-    /// 수신인 전화번호
+    /// 청구 카드 명의자의 전화번호
     public let phoneNumber: String?
-    /// 배송지 우편번호
+    /// 청구지 우편번호
     public let postalCode: String?
-    /// 배송지가 미국 혹은 캐나다인 경우, 배송지 주 정보
+    /// 청구지가 미국 혹은 캐나다인 경우, 청구지 주 정보
     public let state: String?
-    /// 배송지 상세 주소
+    /// 청구지 상세 주소
     public let street1: String?
 
     private enum CodingKeys: String, CodingKey {
