@@ -5,10 +5,10 @@ import Foundation
 
 /// **결제창이 iframe 방식일 경우 결제창에 적용할 속성**
 public struct Iframe: Codable {
-    /// `false`로 설정하면 결제창 배경이 투명해집니다.
-    public let dim: Bool?
+  /// `false`로 설정하면 결제창 배경이 투명해집니다.
+  public let dim: Bool?
 
-    public init(dim: Bool? = nil) {
-        self.dim = dim
-    }
+  public init(dim: Bool? = nil) {
+    self.dim = dim
+  }
 }

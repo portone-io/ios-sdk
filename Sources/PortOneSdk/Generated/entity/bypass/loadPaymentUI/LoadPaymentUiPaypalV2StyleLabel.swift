@@ -5,11 +5,11 @@ import Foundation
 
 /// 버튼 라벨
 public enum LoadPaymentUiPaypalV2StyleLabel: String, Codable {
-    case paypal
-    case checkout
-    case buynow
-    case pay
-    case installment
-    case subscribe
-    case donate
+  case paypal
+  case checkout
+  case buynow
+  case pay
+  case installment
+  case subscribe
+  case donate
 }

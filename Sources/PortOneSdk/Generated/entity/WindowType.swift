@@ -4,8 +4,8 @@
 import Foundation
 
 public enum WindowType: String, Codable {
-    case IFRAME
-    case POPUP
-    case REDIRECTION
-    case UI
+  case IFRAME
+  case POPUP
+  case REDIRECTION
+  case UI
 }

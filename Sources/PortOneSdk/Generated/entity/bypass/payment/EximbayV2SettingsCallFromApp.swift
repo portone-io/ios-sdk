@@ -5,6 +5,6 @@ import Foundation
 
 /// 인앱 웹뷰 여부
 public enum EximbayV2SettingsCallFromApp: String, Codable {
-    case Y
-    case N
+  case Y
+  case N
 }

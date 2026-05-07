@@ -5,10 +5,10 @@ import Foundation
 
 /// **토스페이 bypass 파라미터**
 public struct TosspayV2IssueBillingKeyBypass: Codable {
-    /// 암호화된 사용자 CI
-    public let encryptedUserCi: String?
+  /// 암호화된 사용자 CI
+  public let encryptedUserCi: String?
 
-    public init(encryptedUserCi: String? = nil) {
-        self.encryptedUserCi = encryptedUserCi
-    }
+  public init(encryptedUserCi: String? = nil) {
+    self.encryptedUserCi = encryptedUserCi
+  }
 }

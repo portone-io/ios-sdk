@@ -5,18 +5,18 @@ import Foundation
 
 /// 상점 영업시간 (HH:mm)
 public struct StoreDetailsOpeningHours: Codable {
-    /// 영업 시작 시간
-    public let `open`: String?
-    /// 영업 종료 시간
-    public let close: String?
+  /// 영업 시작 시간
+  public let `open`: String?
+  /// 영업 종료 시간
+  public let close: String?
 
-    private enum CodingKeys: String, CodingKey {
-        case `open` = "open"
-        case close
-    }
+  private enum CodingKeys: String, CodingKey {
+    case `open` = "open"
+    case close
+  }
 
-    public init(`open`: String? = nil, close: String? = nil) {
-        self.`open` = `open`
-        self.close = close
-    }
+  public init(`open`: String? = nil, close: String? = nil) {
+    self.`open` = `open`
+    self.close = close
+  }
 }

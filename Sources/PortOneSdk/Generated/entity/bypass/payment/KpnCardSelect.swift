@@ -4,12 +4,12 @@
 import Foundation
 
 public enum KpnCardSelect: String, Codable {
-    /// 해외카드
-    case GLOBAL
-    /// 11Pay
-    case _11PAY = "11PAY"
-    /// 구인증
-    case LEGACY_AUTH
-    /// 키인
-    case KEY_IN
+  /// 해외카드
+  case GLOBAL
+  /// 11Pay
+  case _11PAY = "11PAY"
+  /// 구인증
+  case LEGACY_AUTH
+  /// 키인
+  case KEY_IN
 }

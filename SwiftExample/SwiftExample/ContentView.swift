@@ -84,16 +84,16 @@ struct ContentView: View {
       },
       content: {
         let paymentId = UUID().uuidString.replacingOccurrences(of: "-", with: "")
-          
+
         let request = PaymentRequest(
-            storeId: storeId,
-            paymentId: paymentId,
-            orderName: "결제 테스트",
-            totalAmount: 1000,
-            currency: Currency.KRW,
-            payMethod: PaymentPayMethod.CARD,
-            channelKey: channelKey,
-            appScheme: "portoneexample://"
+          storeId: storeId,
+          paymentId: paymentId,
+          orderName: "결제 테스트",
+          totalAmount: 1000,
+          currency: Currency.KRW,
+          payMethod: PaymentPayMethod.CARD,
+          channelKey: channelKey,
+          appScheme: "portoneexample://"
         )
 
         PaymentWebView(

@@ -4,7 +4,7 @@
 import Foundation
 
 public enum PaypalV2PaymentSourcePaypalExperienceContextLandingPage: String, Codable {
-    case LOGIN
-    case GUEST_CHECKOUT
-    case NO_PREFERENCE
+  case LOGIN
+  case GUEST_CHECKOUT
+  case NO_PREFERENCE
 }

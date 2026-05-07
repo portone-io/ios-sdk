@@ -4,5 +4,5 @@
 import Foundation
 
 public struct PaymentRequestUnionPaypal: Codable {
-    public init() {}
+  public init() {}
 }

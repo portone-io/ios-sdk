@@ -5,14 +5,14 @@ import Foundation
 
 /// **KCP bypass 파라미터**
 public struct KcpV2IssueBillingKeyBypass: Codable {
-    /// 결제창에서 주민번호/사업자 번호 고정여부 설정
-    public let batchSocChoice: KcpV2BatchSocChoice?
+  /// 결제창에서 주민번호/사업자 번호 고정여부 설정
+  public let batchSocChoice: KcpV2BatchSocChoice?
 
-    private enum CodingKeys: String, CodingKey {
-        case batchSocChoice = "batch_soc_choice"
-    }
+  private enum CodingKeys: String, CodingKey {
+    case batchSocChoice = "batch_soc_choice"
+  }
 
-    public init(batchSocChoice: KcpV2BatchSocChoice? = nil) {
-        self.batchSocChoice = batchSocChoice
-    }
+  public init(batchSocChoice: KcpV2BatchSocChoice? = nil) {
+    self.batchSocChoice = batchSocChoice
+  }
 }

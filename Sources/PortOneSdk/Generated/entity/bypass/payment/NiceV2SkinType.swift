@@ -4,12 +4,12 @@
 import Foundation
 
 /// 결제창 스킨 색상 설정
-/// 
+///
 /// `"red", "green", "purple", "gray", "dark"` 중 하나의 값으로 입력해주세요.
 public enum NiceV2SkinType: String, Codable {
-    case red
-    case green
-    case purple
-    case gray
-    case dark
+  case red
+  case green
+  case purple
+  case gray
+  case dark
 }

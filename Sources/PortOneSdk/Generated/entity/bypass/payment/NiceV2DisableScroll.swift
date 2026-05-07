@@ -5,6 +5,6 @@ import Foundation
 
 /// 결제창 스크롤 미사용 여부 (PC Only, Y: 미사용 / N(default): 사용)
 public enum NiceV2DisableScroll: String, Codable {
-    case Y
-    case N
+  case Y
+  case N
 }

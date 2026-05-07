@@ -5,30 +5,32 @@ import Foundation
 
 /// **기간 범위**
 public enum OfferPeriodRange: Codable {
-    case offerPeriodRangeFrom(OfferPeriodRangeFrom)
-    case offerPeriodRangeTo(OfferPeriodRangeTo)
-    case offerPeriodRangeFromTo(OfferPeriodRangeFromTo)
+  case offerPeriodRangeFrom(OfferPeriodRangeFrom)
+  case offerPeriodRangeTo(OfferPeriodRangeTo)
+  case offerPeriodRangeFromTo(OfferPeriodRangeFromTo)
 
-    public init(from decoder: Decoder) throws {
-        if let value = try? OfferPeriodRangeFrom(from: decoder) {
-            self = .offerPeriodRangeFrom(value)
-        } else if let value = try? OfferPeriodRangeTo(from: decoder) {
-            self = .offerPeriodRangeTo(value)
-        } else if let value = try? OfferPeriodRangeFromTo(from: decoder) {
-            self = .offerPeriodRangeFromTo(value)
-        } else {
-            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "No matching type found"))
-        }
+  public init(from decoder: Decoder) throws {
+    if let value = try? OfferPeriodRangeFrom(from: decoder) {
+      self = .offerPeriodRangeFrom(value)
+    } else if let value = try? OfferPeriodRangeTo(from: decoder) {
+      self = .offerPeriodRangeTo(value)
+    } else if let value = try? OfferPeriodRangeFromTo(from: decoder) {
+      self = .offerPeriodRangeFromTo(value)
+    } else {
+      throw DecodingError.dataCorrupted(
+        DecodingError.Context(
+          codingPath: decoder.codingPath, debugDescription: "No matching type found"))
     }
+  }
 
-    public func encode(to encoder: Encoder) throws {
-        switch self {
-        case .offerPeriodRangeFrom(let value):
-            try value.encode(to: encoder)
-        case .offerPeriodRangeTo(let value):
-            try value.encode(to: encoder)
-        case .offerPeriodRangeFromTo(let value):
-            try value.encode(to: encoder)
-        }
+  public func encode(to encoder: Encoder) throws {
+    switch self {
+    case .offerPeriodRangeFrom(let value):
+      try value.encode(to: encoder)
+    case .offerPeriodRangeTo(let value):
+      try value.encode(to: encoder)
+    case .offerPeriodRangeFromTo(let value):
+      try value.encode(to: encoder)
     }
+  }
 }

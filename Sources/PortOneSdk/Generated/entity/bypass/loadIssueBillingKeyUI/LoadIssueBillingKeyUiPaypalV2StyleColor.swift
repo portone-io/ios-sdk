@@ -5,9 +5,9 @@ import Foundation
 
 /// 버튼 색상
 public enum LoadIssueBillingKeyUiPaypalV2StyleColor: String, Codable {
-    case gold
-    case blue
-    case silver
-    case white
-    case black
+  case gold
+  case blue
+  case silver
+  case white
+  case black
 }

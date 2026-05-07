@@ -5,14 +5,14 @@ import Foundation
 
 /// **KCP bypass 파라미터**
 public struct KcpV2IdentityVerificationBypass: Codable {
-    /// **DI 생성 시 사용할 사이트 ID**
-    public let webSiteid: String?
+  /// **DI 생성 시 사용할 사이트 ID**
+  public let webSiteid: String?
 
-    private enum CodingKeys: String, CodingKey {
-        case webSiteid = "web_siteid"
-    }
+  private enum CodingKeys: String, CodingKey {
+    case webSiteid = "web_siteid"
+  }
 
-    public init(webSiteid: String? = nil) {
-        self.webSiteid = webSiteid
-    }
+  public init(webSiteid: String? = nil) {
+    self.webSiteid = webSiteid
+  }
 }

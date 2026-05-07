@@ -5,10 +5,10 @@ import Foundation
 
 /// **상품권 결제 설정**
 public struct PaymentRequestUnionGiftCertificate: Codable {
-    /// **상품권 종류**
-    public let giftCertificateType: GiftCertificateType?
+  /// **상품권 종류**
+  public let giftCertificateType: GiftCertificateType?
 
-    public init(giftCertificateType: GiftCertificateType? = nil) {
-        self.giftCertificateType = giftCertificateType
-    }
+  public init(giftCertificateType: GiftCertificateType? = nil) {
+    self.giftCertificateType = giftCertificateType
+  }
 }

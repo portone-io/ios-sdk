@@ -4,5 +4,5 @@
 import Foundation
 
 public enum PaymentUIType: String, Codable {
-    case PAYPAL_SPB
+  case PAYPAL_SPB
 }

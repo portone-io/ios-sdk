@@ -5,8 +5,8 @@ import Foundation
 
 /// 결제창에서 주민번호/사업자 번호 고정여부 설정
 public enum KcpV2BatchSocChoice: String, Codable {
-    /// 주민번호만 표시
-    case S
-    /// 사업자번호만 표시
-    case C
+  /// 주민번호만 표시
+  case S
+  /// 사업자번호만 표시
+  case C
 }

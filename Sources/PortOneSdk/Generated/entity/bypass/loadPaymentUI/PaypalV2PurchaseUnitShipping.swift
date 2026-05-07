@@ -5,10 +5,10 @@ import Foundation
 
 /// 구매 상품 정보
 public struct PaypalV2PurchaseUnitShipping: Codable {
-    /// 수령지 정보
-    public let address: PaypalV2PurchaseUnitShippingAddress?
+  /// 수령지 정보
+  public let address: PaypalV2PurchaseUnitShippingAddress?
 
-    public init(address: PaypalV2PurchaseUnitShippingAddress? = nil) {
-        self.address = address
-    }
+  public init(address: PaypalV2PurchaseUnitShippingAddress? = nil) {
+    self.address = address
+  }
 }

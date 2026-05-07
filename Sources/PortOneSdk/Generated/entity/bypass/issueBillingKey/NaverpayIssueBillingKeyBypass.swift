@@ -5,13 +5,13 @@ import Foundation
 
 /// **네이버페이 bypass 파라미터**
 public struct NaverpayIssueBillingKeyBypass: Codable {
-    /// 하부 가맹점 명
-    public let subMerchantName: String?
-    /// 하부 가맹점 ID
-    public let subMerchantId: String?
+  /// 하부 가맹점 명
+  public let subMerchantName: String?
+  /// 하부 가맹점 ID
+  public let subMerchantId: String?
 
-    public init(subMerchantName: String? = nil, subMerchantId: String? = nil) {
-        self.subMerchantName = subMerchantName
-        self.subMerchantId = subMerchantId
-    }
+  public init(subMerchantName: String? = nil, subMerchantId: String? = nil) {
+    self.subMerchantName = subMerchantName
+    self.subMerchantId = subMerchantId
+  }
 }

@@ -4,17 +4,17 @@
 import Foundation
 
 public struct PaypalV2Payer: Codable {
-    /// 구매자 정보
-    public let taxInfo: PaypalV2PayerTaxInfo?
-    public let address: PaypalV2PayerAddress?
+  /// 구매자 정보
+  public let taxInfo: PaypalV2PayerTaxInfo?
+  public let address: PaypalV2PayerAddress?
 
-    private enum CodingKeys: String, CodingKey {
-        case taxInfo = "tax_info"
-        case address
-    }
+  private enum CodingKeys: String, CodingKey {
+    case taxInfo = "tax_info"
+    case address
+  }
 
-    public init(taxInfo: PaypalV2PayerTaxInfo? = nil, address: PaypalV2PayerAddress? = nil) {
-        self.taxInfo = taxInfo
-        self.address = address
-    }
+  public init(taxInfo: PaypalV2PayerTaxInfo? = nil, address: PaypalV2PayerAddress? = nil) {
+    self.taxInfo = taxInfo
+    self.address = address
+  }
 }

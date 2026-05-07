@@ -5,13 +5,13 @@ import Foundation
 
 /// KSNET bypass 파라미터
 public struct KsnetPaymentBypass: Codable {
-    /// 간편 결제 표시 구분
-    public let sndQpayType: KsnetSndQpayType?
-    /// **KSNET 간편결제 다이렉트 여부**
-    public let easyPayDirect: Bool?
+  /// 간편 결제 표시 구분
+  public let sndQpayType: KsnetSndQpayType?
+  /// **KSNET 간편결제 다이렉트 여부**
+  public let easyPayDirect: Bool?
 
-    public init(sndQpayType: KsnetSndQpayType? = nil, easyPayDirect: Bool? = nil) {
-        self.sndQpayType = sndQpayType
-        self.easyPayDirect = easyPayDirect
-    }
+  public init(sndQpayType: KsnetSndQpayType? = nil, easyPayDirect: Bool? = nil) {
+    self.sndQpayType = sndQpayType
+    self.easyPayDirect = easyPayDirect
+  }
 }

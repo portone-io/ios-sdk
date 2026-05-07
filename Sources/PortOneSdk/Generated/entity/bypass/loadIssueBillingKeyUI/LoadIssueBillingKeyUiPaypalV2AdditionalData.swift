@@ -4,11 +4,11 @@
 import Foundation
 
 public struct LoadIssueBillingKeyUiPaypalV2AdditionalData: Codable {
-    public let key: String
-    public let value: String
+  public let key: String
+  public let value: String
 
-    public init(key: String, value: String) {
-        self.key = key
-        self.value = value
-    }
+  public init(key: String, value: String) {
+    self.key = key
+    self.value = value
+  }
 }

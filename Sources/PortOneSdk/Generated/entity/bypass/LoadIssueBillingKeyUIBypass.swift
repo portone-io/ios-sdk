@@ -4,14 +4,14 @@
 import Foundation
 
 public struct LoadIssueBillingKeyUIBypass: Codable {
-    /// **Paypal bypass 파라미터**
-    public let paypalV2: PaypalV2LoadIssueBillingKeyUIBypass?
+  /// **Paypal bypass 파라미터**
+  public let paypalV2: PaypalV2LoadIssueBillingKeyUIBypass?
 
-    private enum CodingKeys: String, CodingKey {
-        case paypalV2 = "paypal_v2"
-    }
+  private enum CodingKeys: String, CodingKey {
+    case paypalV2 = "paypal_v2"
+  }
 
-    public init(paypalV2: PaypalV2LoadIssueBillingKeyUIBypass? = nil) {
-        self.paypalV2 = paypalV2
-    }
+  public init(paypalV2: PaypalV2LoadIssueBillingKeyUIBypass? = nil) {
+    self.paypalV2 = paypalV2
+  }
 }

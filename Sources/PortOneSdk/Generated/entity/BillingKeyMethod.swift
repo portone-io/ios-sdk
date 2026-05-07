@@ -5,12 +5,12 @@ import Foundation
 
 /// 빌링키 발급 수단
 public enum BillingKeyMethod: String, Codable {
-    /// 카드
-    case CARD
-    /// 휴대전화
-    case MOBILE
-    /// 간편결제
-    case EASY_PAY
-    /// 페이팔(RT)
-    case PAYPAL
+  /// 카드
+  case CARD
+  /// 휴대전화
+  case MOBILE
+  /// 간편결제
+  case EASY_PAY
+  /// 페이팔(RT)
+  case PAYPAL
 }

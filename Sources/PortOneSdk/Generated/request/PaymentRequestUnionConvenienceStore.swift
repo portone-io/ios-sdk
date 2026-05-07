@@ -4,10 +4,10 @@
 import Foundation
 
 public struct PaymentRequestUnionConvenienceStore: Codable {
-    /// **편의점결제 지불기한**
-    public let paymentDeadline: PaymentRequestUnionConvenienceStorePaymentDeadline?
+  /// **편의점결제 지불기한**
+  public let paymentDeadline: PaymentRequestUnionConvenienceStorePaymentDeadline?
 
-    public init(paymentDeadline: PaymentRequestUnionConvenienceStorePaymentDeadline? = nil) {
-        self.paymentDeadline = paymentDeadline
-    }
+  public init(paymentDeadline: PaymentRequestUnionConvenienceStorePaymentDeadline? = nil) {
+    self.paymentDeadline = paymentDeadline
+  }
 }

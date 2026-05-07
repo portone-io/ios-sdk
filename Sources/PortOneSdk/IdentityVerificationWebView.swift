@@ -11,7 +11,10 @@ public struct IdentityVerificationWebView: UIViewRepresentable {
   let json: String
   let onCompletion: (IdentityVerificationResult) -> Void
 
-  public init?(request: IdentityVerificationRequest, onCompletion: @escaping (IdentityVerificationResult) -> Void) {
+  public init?(
+    request: IdentityVerificationRequest,
+    onCompletion: @escaping (IdentityVerificationResult) -> Void
+  ) {
     let encoder = JSONEncoder()
     do {
       let data = try encoder.encode(request)

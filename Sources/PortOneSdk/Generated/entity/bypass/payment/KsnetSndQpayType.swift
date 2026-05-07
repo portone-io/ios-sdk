@@ -5,8 +5,8 @@ import Foundation
 
 /// 간편 결제 표시 구분
 public enum KsnetSndQpayType: String, Codable {
-    /// 간편 결제 표시
-    case _1 = "1"
-    /// 간편 결제 미표시
-    case _0 = "0"
+  /// 간편 결제 표시
+  case _1 = "1"
+  /// 간편 결제 미표시
+  case _0 = "0"
 }

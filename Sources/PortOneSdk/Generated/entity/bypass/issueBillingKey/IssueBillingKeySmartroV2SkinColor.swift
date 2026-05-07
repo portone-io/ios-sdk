@@ -5,8 +5,8 @@ import Foundation
 
 /// UI 스타일(기본: RED)
 public enum IssueBillingKeySmartroV2SkinColor: String, Codable {
-    case RED
-    case GREEN
-    case BLUE
-    case PURPLE
+  case RED
+  case GREEN
+  case BLUE
+  case PURPLE
 }

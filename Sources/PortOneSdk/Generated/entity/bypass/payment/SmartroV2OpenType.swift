@@ -4,9 +4,9 @@
 import Foundation
 
 /// 해외 카드만 결제를 허용할지 여부(기본값: `"KR"`)
-/// 
+///
 /// `"KR"`, `"EN"` 중 하나의 값으로 입력해주세요.
 public enum SmartroV2OpenType: String, Codable {
-    case KR
-    case EN
+  case KR
+  case EN
 }

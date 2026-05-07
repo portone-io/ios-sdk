@@ -5,9 +5,9 @@ import Foundation
 
 /// 하이픈 bypass 파라미터
 public struct HyphenBypass: Codable {
-    public let designCd: String?
+  public let designCd: String?
 
-    public init(designCd: String? = nil) {
-        self.designCd = designCd
-    }
+  public init(designCd: String? = nil) {
+    self.designCd = designCd
+  }
 }

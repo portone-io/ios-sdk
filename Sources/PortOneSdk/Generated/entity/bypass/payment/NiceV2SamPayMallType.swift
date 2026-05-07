@@ -5,8 +5,8 @@ import Foundation
 
 /// 삼성페이 고객사 유형 (01: 삼성페이 內 쇼핑 / 99: 기타 (기본값))
 public enum NiceV2SamPayMallType: String, Codable {
-    /// 삼성페이 內 쇼핑
-    case _01 = "01"
-    /// 기타 (기본값)
-    case _99 = "99"
+  /// 삼성페이 內 쇼핑
+  case _01 = "01"
+  /// 기타 (기본값)
+  case _99 = "99"
 }

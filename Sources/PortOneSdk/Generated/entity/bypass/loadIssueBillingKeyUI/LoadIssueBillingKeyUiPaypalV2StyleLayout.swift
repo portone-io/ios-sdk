@@ -5,6 +5,6 @@ import Foundation
 
 /// 버튼 렌더링 방향
 public enum LoadIssueBillingKeyUiPaypalV2StyleLayout: String, Codable {
-    case vertical
-    case horizontal
+  case vertical
+  case horizontal
 }

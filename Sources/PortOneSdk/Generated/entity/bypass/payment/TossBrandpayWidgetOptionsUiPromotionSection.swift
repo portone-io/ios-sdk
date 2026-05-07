@@ -4,11 +4,14 @@
 import Foundation
 
 public struct TossBrandpayWidgetOptionsUiPromotionSection: Codable {
-    public let summary: TossBrandpayWidgetOptionsUiPromotionSectionSummary?
-    public let description: TossBrandpayWidgetOptionsUiPromotionSectionDescription?
+  public let summary: TossBrandpayWidgetOptionsUiPromotionSectionSummary?
+  public let description: TossBrandpayWidgetOptionsUiPromotionSectionDescription?
 
-    public init(summary: TossBrandpayWidgetOptionsUiPromotionSectionSummary? = nil, description: TossBrandpayWidgetOptionsUiPromotionSectionDescription? = nil) {
-        self.summary = summary
-        self.description = description
-    }
+  public init(
+    summary: TossBrandpayWidgetOptionsUiPromotionSectionSummary? = nil,
+    description: TossBrandpayWidgetOptionsUiPromotionSectionDescription? = nil
+  ) {
+    self.summary = summary
+    self.description = description
+  }
 }

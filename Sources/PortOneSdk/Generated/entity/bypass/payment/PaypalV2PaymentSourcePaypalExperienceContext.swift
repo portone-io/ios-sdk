@@ -4,22 +4,29 @@
 import Foundation
 
 public struct PaypalV2PaymentSourcePaypalExperienceContext: Codable {
-    public let brandName: String?
-    public let shippingPreference: PaypalV2PaymentSourcePaypalExperienceContextShippingPreference?
-    public let landingPage: PaypalV2PaymentSourcePaypalExperienceContextLandingPage?
-    public let paymentMethodPreference: PaypalV2PaymentSourcePaypalExperienceContextPaymentMethodPreference?
+  public let brandName: String?
+  public let shippingPreference: PaypalV2PaymentSourcePaypalExperienceContextShippingPreference?
+  public let landingPage: PaypalV2PaymentSourcePaypalExperienceContextLandingPage?
+  public let paymentMethodPreference:
+    PaypalV2PaymentSourcePaypalExperienceContextPaymentMethodPreference?
 
-    private enum CodingKeys: String, CodingKey {
-        case brandName = "brand_name"
-        case shippingPreference = "shipping_preference"
-        case landingPage = "landing_page"
-        case paymentMethodPreference = "payment_method_preference"
-    }
+  private enum CodingKeys: String, CodingKey {
+    case brandName = "brand_name"
+    case shippingPreference = "shipping_preference"
+    case landingPage = "landing_page"
+    case paymentMethodPreference = "payment_method_preference"
+  }
 
-    public init(brandName: String? = nil, shippingPreference: PaypalV2PaymentSourcePaypalExperienceContextShippingPreference? = nil, landingPage: PaypalV2PaymentSourcePaypalExperienceContextLandingPage? = nil, paymentMethodPreference: PaypalV2PaymentSourcePaypalExperienceContextPaymentMethodPreference? = nil) {
-        self.brandName = brandName
-        self.shippingPreference = shippingPreference
-        self.landingPage = landingPage
-        self.paymentMethodPreference = paymentMethodPreference
-    }
+  public init(
+    brandName: String? = nil,
+    shippingPreference: PaypalV2PaymentSourcePaypalExperienceContextShippingPreference? = nil,
+    landingPage: PaypalV2PaymentSourcePaypalExperienceContextLandingPage? = nil,
+    paymentMethodPreference: PaypalV2PaymentSourcePaypalExperienceContextPaymentMethodPreference? =
+      nil
+  ) {
+    self.brandName = brandName
+    self.shippingPreference = shippingPreference
+    self.landingPage = landingPage
+    self.paymentMethodPreference = paymentMethodPreference
+  }
 }

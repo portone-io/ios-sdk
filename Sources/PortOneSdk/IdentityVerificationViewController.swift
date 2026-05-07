@@ -7,7 +7,10 @@ public class IdentityVerificationViewController: UIViewController {
   private let onCompletion: (IdentityVerificationResult) -> Void
   private var hostingController: UIHostingController<IdentityVerificationWebView>?
 
-  public init(request: IdentityVerificationRequest, onCompletion: @escaping (IdentityVerificationResult) -> Void) {
+  public init(
+    request: IdentityVerificationRequest,
+    onCompletion: @escaping (IdentityVerificationResult) -> Void
+  ) {
     self.request = request
     self.onCompletion = onCompletion
     super.init(nibName: nil, bundle: nil)
@@ -23,8 +26,10 @@ public class IdentityVerificationViewController: UIViewController {
   }
 
   private func setupIdentityVerificationWebView() {
-    guard let identityVerificationWebView = IdentityVerificationWebView(
-      request: request, onCompletion: onCompletion) else {
+    guard
+      let identityVerificationWebView = IdentityVerificationWebView(
+        request: request, onCompletion: onCompletion)
+    else {
       return
     }
     let hostingController = UIHostingController(rootView: identityVerificationWebView)

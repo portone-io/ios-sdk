@@ -5,13 +5,13 @@ import Foundation
 
 /// **상품권 종류**
 public enum GiftCertificateType: String, Codable {
-    /// 도서문화상품권
-    /// | KG이니시스
-    case BOOKNLIFE
-    /// 스마트문상, (구)게임문화상품권
-    case SMART_MUNSANG
-    /// 컬쳐랜드 문화상품권
-    case CULTURELAND
-    /// 문화상품권
-    case CULTURE_GIFT
+  /// 도서문화상품권
+  /// | KG이니시스
+  case BOOKNLIFE
+  /// 스마트문상, (구)게임문화상품권
+  case SMART_MUNSANG
+  /// 컬쳐랜드 문화상품권
+  case CULTURELAND
+  /// 문화상품권
+  case CULTURE_GIFT
 }

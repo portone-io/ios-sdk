@@ -4,12 +4,12 @@
 import Foundation
 
 public struct IssueBillingKeyAndPayRequestUnionMobile: Codable {
-    /// 통신사 코드
-    public let carrier: Carrier?
-    public let avaliableCarriers: [Carrier]?
+  /// 통신사 코드
+  public let carrier: Carrier?
+  public let avaliableCarriers: [Carrier]?
 
-    public init(carrier: Carrier? = nil, avaliableCarriers: [Carrier]? = nil) {
-        self.carrier = carrier
-        self.avaliableCarriers = avaliableCarriers
-    }
+  public init(carrier: Carrier? = nil, avaliableCarriers: [Carrier]? = nil) {
+    self.carrier = carrier
+    self.avaliableCarriers = avaliableCarriers
+  }
 }

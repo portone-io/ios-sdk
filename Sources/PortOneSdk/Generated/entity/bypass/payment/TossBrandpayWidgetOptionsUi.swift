@@ -4,9 +4,9 @@
 import Foundation
 
 public struct TossBrandpayWidgetOptionsUi: Codable {
-    public let promotionSection: TossBrandpayWidgetOptionsUiPromotionSection?
+  public let promotionSection: TossBrandpayWidgetOptionsUiPromotionSection?
 
-    public init(promotionSection: TossBrandpayWidgetOptionsUiPromotionSection? = nil) {
-        self.promotionSection = promotionSection
-    }
+  public init(promotionSection: TossBrandpayWidgetOptionsUiPromotionSection? = nil) {
+    self.promotionSection = promotionSection
+  }
 }

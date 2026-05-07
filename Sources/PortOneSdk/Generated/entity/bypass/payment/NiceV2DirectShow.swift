@@ -5,8 +5,8 @@ import Foundation
 
 /// 다이렉트 호출 결제 수단 (BANK: 계좌이체/CELLPHONE: 휴대폰 소액결제)
 public enum NiceV2DirectShow: String, Codable {
-    /// 계좌이체
-    case BANK
-    /// 휴대폰 소액결제
-    case CELLPHONE
+  /// 계좌이체
+  case BANK
+  /// 휴대폰 소액결제
+  case CELLPHONE
 }

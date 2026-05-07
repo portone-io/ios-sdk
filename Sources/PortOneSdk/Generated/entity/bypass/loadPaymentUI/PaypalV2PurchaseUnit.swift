@@ -4,10 +4,10 @@
 import Foundation
 
 public struct PaypalV2PurchaseUnit: Codable {
-    /// 구매 상품 정보
-    public let shipping: PaypalV2PurchaseUnitShipping?
+  /// 구매 상품 정보
+  public let shipping: PaypalV2PurchaseUnitShipping?
 
-    public init(shipping: PaypalV2PurchaseUnitShipping? = nil) {
-        self.shipping = shipping
-    }
+  public init(shipping: PaypalV2PurchaseUnitShipping? = nil) {
+    self.shipping = shipping
+  }
 }

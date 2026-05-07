@@ -4,15 +4,18 @@
 import Foundation
 
 public struct IssueBillingKeyRequestUnionEasyPay: Codable {
-    public let availableCards: [CardCompany]?
-    /// PG 제휴로 간편결제를 이용할 때, 간편결제 UI를 직접 호출할 수 있는 간편결제
-    public let easyPayProvider: EasyPayProvider?
-    /// 노출을 허용할 결제 수단의 종류
-    public let availablePayMethods: [EasyPayPaymentMethod]?
+  public let availableCards: [CardCompany]?
+  /// PG 제휴로 간편결제를 이용할 때, 간편결제 UI를 직접 호출할 수 있는 간편결제
+  public let easyPayProvider: EasyPayProvider?
+  /// 노출을 허용할 결제 수단의 종류
+  public let availablePayMethods: [EasyPayPaymentMethod]?
 
-    public init(availableCards: [CardCompany]? = nil, easyPayProvider: EasyPayProvider? = nil, availablePayMethods: [EasyPayPaymentMethod]? = nil) {
-        self.availableCards = availableCards
-        self.easyPayProvider = easyPayProvider
-        self.availablePayMethods = availablePayMethods
-    }
+  public init(
+    availableCards: [CardCompany]? = nil, easyPayProvider: EasyPayProvider? = nil,
+    availablePayMethods: [EasyPayPaymentMethod]? = nil
+  ) {
+    self.availableCards = availableCards
+    self.easyPayProvider = easyPayProvider
+    self.availablePayMethods = availablePayMethods
+  }
 }

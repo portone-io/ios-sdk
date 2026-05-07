@@ -4,22 +4,22 @@
 import Foundation
 
 public struct EximbayV2Surcharge: Codable {
-    /// 항목명
-    public let name: String?
-    /// 수량
-    public let quantity: String?
-    /// 단가 (음수 가능)
-    public let unitPrice: String?
+  /// 항목명
+  public let name: String?
+  /// 수량
+  public let quantity: String?
+  /// 단가 (음수 가능)
+  public let unitPrice: String?
 
-    private enum CodingKeys: String, CodingKey {
-        case name
-        case quantity
-        case unitPrice = "unit_price"
-    }
+  private enum CodingKeys: String, CodingKey {
+    case name
+    case quantity
+    case unitPrice = "unit_price"
+  }
 
-    public init(name: String? = nil, quantity: String? = nil, unitPrice: String? = nil) {
-        self.name = name
-        self.quantity = quantity
-        self.unitPrice = unitPrice
-    }
+  public init(name: String? = nil, quantity: String? = nil, unitPrice: String? = nil) {
+    self.name = name
+    self.quantity = quantity
+    self.unitPrice = unitPrice
+  }
 }

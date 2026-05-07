@@ -4,5 +4,5 @@
 import Foundation
 
 public enum IssueBillingKeyUIType: String, Codable {
-    case PAYPAL_RT
+  case PAYPAL_RT
 }

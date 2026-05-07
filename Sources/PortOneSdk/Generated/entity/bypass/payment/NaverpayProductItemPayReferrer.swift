@@ -5,14 +5,14 @@ import Foundation
 
 /// 결제 상품 유입경로
 public enum NaverpayProductItemPayReferrer: String, Codable {
-    case NAVER_BOOK
-    case NAVER_MUSIC
-    case NAVER_SHOPPING
-    case NAVER_MAP
-    case NAVER_PLACE
-    case SEARCH_AD
-    case NAVER_SEARCH
-    case BRAND_SEARCH
-    case PARTNER_DIRECT
-    case ETC
+  case NAVER_BOOK
+  case NAVER_MUSIC
+  case NAVER_SHOPPING
+  case NAVER_MAP
+  case NAVER_PLACE
+  case SEARCH_AD
+  case NAVER_SEARCH
+  case BRAND_SEARCH
+  case PARTNER_DIRECT
+  case ETC
 }

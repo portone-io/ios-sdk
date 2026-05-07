@@ -7,7 +7,9 @@ public class IssueBillingKeyViewController: UIViewController {
   private let onCompletion: (IssueBillingKeyResult) -> Void
   private var hostingController: UIHostingController<IssueBillingKeyWebView>?
 
-  public init(request: IssueBillingKeyRequest, onCompletion: @escaping (IssueBillingKeyResult) -> Void) {
+  public init(
+    request: IssueBillingKeyRequest, onCompletion: @escaping (IssueBillingKeyResult) -> Void
+  ) {
     self.request = request
     self.onCompletion = onCompletion
     super.init(nibName: nil, bundle: nil)
@@ -23,7 +25,10 @@ public class IssueBillingKeyViewController: UIViewController {
   }
 
   private func setupIssueBillingKeyWebView() {
-    guard let issueBillingKeyWebView = IssueBillingKeyWebView(request: request, onCompletion: onCompletion) else {
+    guard
+      let issueBillingKeyWebView = IssueBillingKeyWebView(
+        request: request, onCompletion: onCompletion)
+    else {
       return
     }
     let hostingController = UIHostingController(rootView: issueBillingKeyWebView)

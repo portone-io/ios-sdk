@@ -4,10 +4,10 @@
 import Foundation
 
 public struct IssueBillingKeyRequestUnionCard: Codable {
-    /// 카드 결제시 사용되는 카드사 코드
-    public let cardCompany: CardCompany?
+  /// 카드 결제시 사용되는 카드사 코드
+  public let cardCompany: CardCompany?
 
-    public init(cardCompany: CardCompany? = nil) {
-        self.cardCompany = cardCompany
-    }
+  public init(cardCompany: CardCompany? = nil) {
+    self.cardCompany = cardCompany
+  }
 }

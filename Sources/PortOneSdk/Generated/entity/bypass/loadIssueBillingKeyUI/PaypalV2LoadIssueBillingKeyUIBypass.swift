@@ -5,21 +5,25 @@ import Foundation
 
 /// **Paypal bypass 파라미터**
 public struct PaypalV2LoadIssueBillingKeyUIBypass: Codable {
-    /// 페이팔 빌링키 발급 UI 호출 시 필요한 파라미터
-    public let style: LoadIssueBillingKeyUiPaypalV2Style?
-    public let shippingAddress: PaypalV2ShippingAddress?
-    /// STC 파라미터
-    public let additionalData: [LoadIssueBillingKeyUiPaypalV2AdditionalData]?
+  /// 페이팔 빌링키 발급 UI 호출 시 필요한 파라미터
+  public let style: LoadIssueBillingKeyUiPaypalV2Style?
+  public let shippingAddress: PaypalV2ShippingAddress?
+  /// STC 파라미터
+  public let additionalData: [LoadIssueBillingKeyUiPaypalV2AdditionalData]?
 
-    private enum CodingKeys: String, CodingKey {
-        case style
-        case shippingAddress = "shipping_address"
-        case additionalData = "additional_data"
-    }
+  private enum CodingKeys: String, CodingKey {
+    case style
+    case shippingAddress = "shipping_address"
+    case additionalData = "additional_data"
+  }
 
-    public init(style: LoadIssueBillingKeyUiPaypalV2Style? = nil, shippingAddress: PaypalV2ShippingAddress? = nil, additionalData: [LoadIssueBillingKeyUiPaypalV2AdditionalData]? = nil) {
-        self.style = style
-        self.shippingAddress = shippingAddress
-        self.additionalData = additionalData
-    }
+  public init(
+    style: LoadIssueBillingKeyUiPaypalV2Style? = nil,
+    shippingAddress: PaypalV2ShippingAddress? = nil,
+    additionalData: [LoadIssueBillingKeyUiPaypalV2AdditionalData]? = nil
+  ) {
+    self.style = style
+    self.shippingAddress = shippingAddress
+    self.additionalData = additionalData
+  }
 }

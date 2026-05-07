@@ -4,10 +4,10 @@
 import Foundation
 
 public struct TossBrandpayBrandpayOptionsUiLabels: Codable {
-    /// UI에 표시되는 원터치 결제를 대신해 사용할 텍스트. (기본값: "원터치 결제")
-    public let oneTouchPay: String?
+  /// UI에 표시되는 원터치 결제를 대신해 사용할 텍스트. (기본값: "원터치 결제")
+  public let oneTouchPay: String?
 
-    public init(oneTouchPay: String? = nil) {
-        self.oneTouchPay = oneTouchPay
-    }
+  public init(oneTouchPay: String? = nil) {
+    self.oneTouchPay = oneTouchPay
+  }
 }

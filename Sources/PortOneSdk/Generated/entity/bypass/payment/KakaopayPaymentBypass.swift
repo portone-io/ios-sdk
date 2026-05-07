@@ -5,14 +5,14 @@ import Foundation
 
 /// 카카오페이 bypass 파라미터
 public struct KakaopayPaymentBypass: Codable {
-    /// 카카오페이 결제창에 띄워줄 사용자 정의 문구
-    public let customMessage: String?
+  /// 카카오페이 결제창에 띄워줄 사용자 정의 문구
+  public let customMessage: String?
 
-    private enum CodingKeys: String, CodingKey {
-        case customMessage = "custom_message"
-    }
+  private enum CodingKeys: String, CodingKey {
+    case customMessage = "custom_message"
+  }
 
-    public init(customMessage: String? = nil) {
-        self.customMessage = customMessage
-    }
+  public init(customMessage: String? = nil) {
+    self.customMessage = customMessage
+  }
 }

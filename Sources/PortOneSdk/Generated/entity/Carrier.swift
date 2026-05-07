@@ -5,16 +5,16 @@ import Foundation
 
 /// 통신사 코드
 public enum Carrier: String, Codable {
-    /// SK텔레콤
-    case SKT
-    /// KT
-    case KT
-    /// LG U+
-    case LGU
-    /// 헬로모바일
-    case HELLO
-    /// 티플러스
-    case KCT
-    /// SK 7mobile
-    case SK7
+  /// SK텔레콤
+  case SKT
+  /// KT
+  case KT
+  /// LG U+
+  case LGU
+  /// 헬로모바일
+  case HELLO
+  /// 티플러스
+  case KCT
+  /// SK 7mobile
+  case SK7
 }

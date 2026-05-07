@@ -5,14 +5,14 @@ import Foundation
 
 /// 세금 정보
 public struct EximbayV2Tax: Codable {
-    /// 현금영수증 발급 여부
-    public let receiptStatus: EximbayV2TaxReceiptStatus?
+  /// 현금영수증 발급 여부
+  public let receiptStatus: EximbayV2TaxReceiptStatus?
 
-    private enum CodingKeys: String, CodingKey {
-        case receiptStatus = "receipt_status"
-    }
+  private enum CodingKeys: String, CodingKey {
+    case receiptStatus = "receipt_status"
+  }
 
-    public init(receiptStatus: EximbayV2TaxReceiptStatus? = nil) {
-        self.receiptStatus = receiptStatus
-    }
+  public init(receiptStatus: EximbayV2TaxReceiptStatus? = nil) {
+    self.receiptStatus = receiptStatus
+  }
 }

@@ -4,7 +4,7 @@
 import Foundation
 
 public enum PaypalV2PaymentSourcePaypalExperienceContextShippingPreference: String, Codable {
-    case GET_FROM_FILE
-    case NO_SHIPPING
-    case SET_PROVIDED_ADDRESS
+  case GET_FROM_FILE
+  case NO_SHIPPING
+  case SET_PROVIDED_ADDRESS
 }

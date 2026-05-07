@@ -4,13 +4,13 @@
 import Foundation
 
 public struct PaypalV2PaymentSourcePaypal: Codable {
-    public let experienceContext: PaypalV2PaymentSourcePaypalExperienceContext?
+  public let experienceContext: PaypalV2PaymentSourcePaypalExperienceContext?
 
-    private enum CodingKeys: String, CodingKey {
-        case experienceContext = "experience_context"
-    }
+  private enum CodingKeys: String, CodingKey {
+    case experienceContext = "experience_context"
+  }
 
-    public init(experienceContext: PaypalV2PaymentSourcePaypalExperienceContext? = nil) {
-        self.experienceContext = experienceContext
-    }
+  public init(experienceContext: PaypalV2PaymentSourcePaypalExperienceContext? = nil) {
+    self.experienceContext = experienceContext
+  }
 }

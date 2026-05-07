@@ -5,8 +5,8 @@ import Foundation
 
 /// **상품 유형**
 public enum ProductType: String, Codable {
-    /// 실물
-    case REAL
-    /// 디지털
-    case DIGITAL
+  /// 실물
+  case REAL
+  /// 디지털
+  case DIGITAL
 }

@@ -5,6 +5,6 @@ import Foundation
 
 /// 빌링키 발급 및 초회결제 수단
 public enum BillingKeyAndPayMethod: String, Codable {
-    /// 휴대전화
-    case MOBILE
+  /// 휴대전화
+  case MOBILE
 }

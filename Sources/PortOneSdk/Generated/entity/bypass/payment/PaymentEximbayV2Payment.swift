@@ -5,18 +5,18 @@ import Foundation
 
 /// 결제 정보
 public struct PaymentEximbayV2Payment: Codable {
-    /// 결제수단 단독 노출
-    public let paymentMethod: String?
-    /// 결제수단 노출 목록
-    public let multiPaymentMethod: [String]?
+  /// 결제수단 단독 노출
+  public let paymentMethod: String?
+  /// 결제수단 노출 목록
+  public let multiPaymentMethod: [String]?
 
-    private enum CodingKeys: String, CodingKey {
-        case paymentMethod = "payment_method"
-        case multiPaymentMethod = "multi_payment_method"
-    }
+  private enum CodingKeys: String, CodingKey {
+    case paymentMethod = "payment_method"
+    case multiPaymentMethod = "multi_payment_method"
+  }
 
-    public init(paymentMethod: String? = nil, multiPaymentMethod: [String]? = nil) {
-        self.paymentMethod = paymentMethod
-        self.multiPaymentMethod = multiPaymentMethod
-    }
+  public init(paymentMethod: String? = nil, multiPaymentMethod: [String]? = nil) {
+    self.paymentMethod = paymentMethod
+    self.multiPaymentMethod = multiPaymentMethod
+  }
 }

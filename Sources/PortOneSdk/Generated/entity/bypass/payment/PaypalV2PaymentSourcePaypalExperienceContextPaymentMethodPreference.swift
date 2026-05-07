@@ -4,6 +4,6 @@
 import Foundation
 
 public enum PaypalV2PaymentSourcePaypalExperienceContextPaymentMethodPreference: String, Codable {
-    case UNRESTRICTED
-    case IMMEDIATE_PAYMENT_REQUIRED
+  case UNRESTRICTED
+  case IMMEDIATE_PAYMENT_REQUIRED
 }

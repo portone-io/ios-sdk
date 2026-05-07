@@ -5,6 +5,6 @@ import Foundation
 
 /// 버튼 모양
 public enum LoadPaymentUiPaypalV2StyleShape: String, Codable {
-    case rect
-    case pill
+  case rect
+  case pill
 }

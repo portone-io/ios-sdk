@@ -4,9 +4,9 @@
 import Foundation
 
 public struct PaypalV2PaymentSource: Codable {
-    public let paypal: PaypalV2PaymentSourcePaypal?
+  public let paypal: PaypalV2PaymentSourcePaypal?
 
-    public init(paypal: PaypalV2PaymentSourcePaypal? = nil) {
-        self.paypal = paypal
-    }
+  public init(paypal: PaypalV2PaymentSourcePaypal? = nil) {
+    self.paypal = paypal
+  }
 }

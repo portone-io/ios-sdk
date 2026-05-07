@@ -5,8 +5,8 @@ import Foundation
 
 /// 가상계좌, 계좌이체 시 현금영수증 노출 여부
 public enum KcpV2DispTax: String, Codable {
-    case Y
-    case N
-    case R
-    case E
+  case Y
+  case N
+  case R
+  case E
 }

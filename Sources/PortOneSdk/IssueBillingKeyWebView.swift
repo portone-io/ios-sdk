@@ -11,7 +11,9 @@ public struct IssueBillingKeyWebView: UIViewRepresentable {
   let json: String
   let onCompletion: (IssueBillingKeyResult) -> Void
 
-  public init?(request: IssueBillingKeyRequest, onCompletion: @escaping (IssueBillingKeyResult) -> Void) {
+  public init?(
+    request: IssueBillingKeyRequest, onCompletion: @escaping (IssueBillingKeyResult) -> Void
+  ) {
     let encoder = JSONEncoder()
     do {
       let data = try encoder.encode(request)

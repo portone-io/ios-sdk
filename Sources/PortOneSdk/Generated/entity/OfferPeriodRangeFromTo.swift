@@ -5,13 +5,13 @@ import Foundation
 
 /// **시작 지점과 종료 지점이 모두 있는 기간 범위**
 public struct OfferPeriodRangeFromTo: Codable {
-    /// **시작 시점**
-    public let from: String
-    /// **종료 지점**
-    public let to: String
+  /// **시작 시점**
+  public let from: String
+  /// **종료 지점**
+  public let to: String
 
-    public init(from: String, to: String) {
-        self.from = from
-        self.to = to
-    }
+  public init(from: String, to: String) {
+    self.from = from
+    self.to = to
+  }
 }

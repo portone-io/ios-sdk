@@ -5,14 +5,14 @@ import Foundation
 
 /// 갤럭시아 bypass 파라미터
 public struct GalaxiaPaymentBypass: Codable {
-    /// 구매 상품 코드
-    public let itemCode: String?
+  /// 구매 상품 코드
+  public let itemCode: String?
 
-    private enum CodingKeys: String, CodingKey {
-        case itemCode = "ITEM_CODE"
-    }
+  private enum CodingKeys: String, CodingKey {
+    case itemCode = "ITEM_CODE"
+  }
 
-    public init(itemCode: String? = nil) {
-        self.itemCode = itemCode
-    }
+  public init(itemCode: String? = nil) {
+    self.itemCode = itemCode
+  }
 }

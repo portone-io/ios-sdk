@@ -4,13 +4,13 @@
 import Foundation
 
 public struct TossBrandpayWidgetOptionsUiPromotionSectionDescription: Codable {
-    /// 결제 혜택 영역을 보여줄지 여부. 기본값은 true
-    public let visible: Bool?
-    /// 결제 혜택의 상세 설명을 보여줄지 여부. 각 카드사의 결제 혜택을 자세히 설명 함. 기본값은 false
-    public let defaultOpen: Bool?
+  /// 결제 혜택 영역을 보여줄지 여부. 기본값은 true
+  public let visible: Bool?
+  /// 결제 혜택의 상세 설명을 보여줄지 여부. 각 카드사의 결제 혜택을 자세히 설명 함. 기본값은 false
+  public let defaultOpen: Bool?
 
-    public init(visible: Bool? = nil, defaultOpen: Bool? = nil) {
-        self.visible = visible
-        self.defaultOpen = defaultOpen
-    }
+  public init(visible: Bool? = nil, defaultOpen: Bool? = nil) {
+    self.visible = visible
+    self.defaultOpen = defaultOpen
+  }
 }

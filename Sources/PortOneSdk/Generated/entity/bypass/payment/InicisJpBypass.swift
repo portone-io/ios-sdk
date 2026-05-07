@@ -5,14 +5,14 @@ import Foundation
 
 /// 이니시스 일본 bypass 파라미터
 public struct InicisJpBypass: Codable {
-    /// 결제창 UI 설정
-    public let paymentUi: InicisJpPaymentUI?
+  /// 결제창 UI 설정
+  public let paymentUi: InicisJpPaymentUI?
 
-    private enum CodingKeys: String, CodingKey {
-        case paymentUi = "paymentUI"
-    }
+  private enum CodingKeys: String, CodingKey {
+    case paymentUi = "paymentUI"
+  }
 
-    public init(paymentUi: InicisJpPaymentUI? = nil) {
-        self.paymentUi = paymentUi
-    }
+  public init(paymentUi: InicisJpPaymentUI? = nil) {
+    self.paymentUi = paymentUi
+  }
 }

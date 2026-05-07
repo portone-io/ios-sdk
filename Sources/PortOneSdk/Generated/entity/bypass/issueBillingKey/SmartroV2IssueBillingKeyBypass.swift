@@ -5,18 +5,20 @@ import Foundation
 
 /// **스마트로 bypass 파라미터**
 public struct SmartroV2IssueBillingKeyBypass: Codable {
-    /// UI 스타일(기본: RED)
-    public let skinColor: IssueBillingKeySmartroV2SkinColor?
-    /// 결제 비밀번호 등록 Skip 여부
-    public let isPwdPass: SmartroV2IsPwdPass?
+  /// UI 스타일(기본: RED)
+  public let skinColor: IssueBillingKeySmartroV2SkinColor?
+  /// 결제 비밀번호 등록 Skip 여부
+  public let isPwdPass: SmartroV2IsPwdPass?
 
-    private enum CodingKeys: String, CodingKey {
-        case skinColor = "SkinColor"
-        case isPwdPass = "IsPwdPass"
-    }
+  private enum CodingKeys: String, CodingKey {
+    case skinColor = "SkinColor"
+    case isPwdPass = "IsPwdPass"
+  }
 
-    public init(skinColor: IssueBillingKeySmartroV2SkinColor? = nil, isPwdPass: SmartroV2IsPwdPass? = nil) {
-        self.skinColor = skinColor
-        self.isPwdPass = isPwdPass
-    }
+  public init(
+    skinColor: IssueBillingKeySmartroV2SkinColor? = nil, isPwdPass: SmartroV2IsPwdPass? = nil
+  ) {
+    self.skinColor = skinColor
+    self.isPwdPass = isPwdPass
+  }
 }

@@ -5,8 +5,8 @@ import Foundation
 
 /// 결제 비밀번호 등록 Skip 여부
 public enum SmartroV2IsPwdPass: String, Codable {
-    /// 비밀번호 설정 미사용
-    case Y
-    /// 비밀번호 설정 사용
-    case N
+  /// 비밀번호 설정 미사용
+  case Y
+  /// 비밀번호 설정 사용
+  case N
 }

@@ -5,10 +5,10 @@ import Foundation
 
 /// **현금영수증 발급 유형**
 public enum CashReceiptType: String, Codable {
-    /// 소득공제(개인)
-    case PERSONAL
-    /// 지출증빙(사업자)
-    case CORPORATE
-    /// 미발행(PG 설정에 따라 무기명으로 자진 발급될 수 있음)
-    case ANONYMOUS
+  /// 소득공제(개인)
+  case PERSONAL
+  /// 지출증빙(사업자)
+  case CORPORATE
+  /// 미발행(PG 설정에 따라 무기명으로 자진 발급될 수 있음)
+  case ANONYMOUS
 }

@@ -5,6 +5,6 @@ import Foundation
 
 /// 현금영수증 발급 여부
 public enum EximbayV2TaxReceiptStatus: String, Codable {
-    case Y
-    case N
+  case Y
+  case N
 }

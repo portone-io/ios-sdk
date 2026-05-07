@@ -5,18 +5,18 @@ import Foundation
 
 /// 상점 정보
 public struct EximbayV2Merchant: Codable {
-    /// 상점명
-    public let shop: String?
-    /// 파트너 코드
-    public let partnerCode: String?
+  /// 상점명
+  public let shop: String?
+  /// 파트너 코드
+  public let partnerCode: String?
 
-    private enum CodingKeys: String, CodingKey {
-        case shop
-        case partnerCode = "partner_code"
-    }
+  private enum CodingKeys: String, CodingKey {
+    case shop
+    case partnerCode = "partner_code"
+  }
 
-    public init(shop: String? = nil, partnerCode: String? = nil) {
-        self.shop = shop
-        self.partnerCode = partnerCode
-    }
+  public init(shop: String? = nil, partnerCode: String? = nil) {
+    self.shop = shop
+    self.partnerCode = partnerCode
+  }
 }

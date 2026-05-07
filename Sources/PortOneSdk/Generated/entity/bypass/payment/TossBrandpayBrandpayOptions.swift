@@ -5,9 +5,9 @@ import Foundation
 
 /// loadBrandpay 호출시 전달하는 세번째 파라미터
 public struct TossBrandpayBrandpayOptions: Codable {
-    public let ui: TossBrandpayBrandpayOptionsUi?
+  public let ui: TossBrandpayBrandpayOptionsUi?
 
-    public init(ui: TossBrandpayBrandpayOptionsUi? = nil) {
-        self.ui = ui
-    }
+  public init(ui: TossBrandpayBrandpayOptionsUi? = nil) {
+    self.ui = ui
+  }
 }

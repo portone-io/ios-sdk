@@ -4,15 +4,15 @@
 import Foundation
 
 /// 현금영수증 발급타입
-/// 
+///
 /// - CULTURE: 문화비
 /// - GENERAL: 일반 (기본값)
 /// - PUBLIC\_TP: 교통비
 public enum TosspayV2CashReceiptTradeOption: String, Codable {
-    /// 문화비
-    case CULTURE
-    /// 일반 (기본값)
-    case GENERAL
-    /// 교통비
-    case PUBLIC_TP
+  /// 문화비
+  case CULTURE
+  /// 일반 (기본값)
+  case GENERAL
+  /// 교통비
+  case PUBLIC_TP
 }

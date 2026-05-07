@@ -5,6 +5,6 @@ import Foundation
 
 /// 위젯에 보여줄 결제 수단. 예) 카드 전달시 등록한 결제 수단 중 카드만 노출 됨
 public enum TossBrandpayWidgetOptionsMethodType: String, Codable {
-    case CARD = "카드"
-    case ACCOUNT = "계좌"
+  case CARD = "카드"
+  case ACCOUNT = "계좌"
 }

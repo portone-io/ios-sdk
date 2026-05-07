@@ -5,10 +5,10 @@ import Foundation
 
 /// 구매자 성별
 public enum Gender: String, Codable {
-    /// 남성
-    case MALE
-    /// 여성
-    case FEMALE
-    /// 기타
-    case OTHER
+  /// 남성
+  case MALE
+  /// 여성
+  case FEMALE
+  /// 기타
+  case OTHER
 }

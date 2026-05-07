@@ -21,6 +21,6 @@ let package = Package(
       name: "PortOneSdk"),
     .testTarget(
       name: "PortOneSdkTests",
-      dependencies: ["PortOneSdk"])
+      dependencies: ["PortOneSdk"]),
   ]
 )

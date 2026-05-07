@@ -4,11 +4,11 @@
 import Foundation
 
 /// UI 스타일 (기본값: `"RED"`)
-/// 
+///
 /// `"RED"`, `"GREEN"`, `"BLUE"`, `"PURPLE"` 중 하나의 값으로 입력해주세요.
 public enum PaymentSmartroV2SkinColor: String, Codable {
-    case RED
-    case GREEN
-    case BLUE
-    case PURPLE
+  case RED
+  case GREEN
+  case BLUE
+  case PURPLE
 }

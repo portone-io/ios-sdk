@@ -5,16 +5,20 @@ import Foundation
 
 /// **PG사 본인인증 창 호출 시 PG사로 그대로 bypass할 값들의 모음**
 public struct IdentityVerificationBypass: Codable {
-    /// **다날 bypass 파라미터**
-    public let danal: DanalIdentityVerificationBypass?
-    /// **KG이니시스 bypass 파라미터**
-    public let inicisUnified: InicisUnifiedIdentityVerificationBypass?
-    /// **KCP bypass 파라미터**
-    public let kcpV2: KcpV2IdentityVerificationBypass?
+  /// **다날 bypass 파라미터**
+  public let danal: DanalIdentityVerificationBypass?
+  /// **KG이니시스 bypass 파라미터**
+  public let inicisUnified: InicisUnifiedIdentityVerificationBypass?
+  /// **KCP bypass 파라미터**
+  public let kcpV2: KcpV2IdentityVerificationBypass?
 
-    public init(danal: DanalIdentityVerificationBypass? = nil, inicisUnified: InicisUnifiedIdentityVerificationBypass? = nil, kcpV2: KcpV2IdentityVerificationBypass? = nil) {
-        self.danal = danal
-        self.inicisUnified = inicisUnified
-        self.kcpV2 = kcpV2
-    }
+  public init(
+    danal: DanalIdentityVerificationBypass? = nil,
+    inicisUnified: InicisUnifiedIdentityVerificationBypass? = nil,
+    kcpV2: KcpV2IdentityVerificationBypass? = nil
+  ) {
+    self.danal = danal
+    self.inicisUnified = inicisUnified
+    self.kcpV2 = kcpV2
+  }
 }

@@ -4,13 +4,13 @@
 import Foundation
 
 public struct TossBrandpayBrandpayOptionsUiNavigationBar: Codable {
-    /// 내비게이션 바 사용 여부. (기본값: true)
-    public let visible: Bool?
-    /// 내비게이션 바 위쪽에 설정할 여백 값. 값의 단위는 px
-    public let paddingTop: Int?
+  /// 내비게이션 바 사용 여부. (기본값: true)
+  public let visible: Bool?
+  /// 내비게이션 바 위쪽에 설정할 여백 값. 값의 단위는 px
+  public let paddingTop: Int?
 
-    public init(visible: Bool? = nil, paddingTop: Int? = nil) {
-        self.visible = visible
-        self.paddingTop = paddingTop
-    }
+  public init(visible: Bool? = nil, paddingTop: Int? = nil) {
+    self.visible = visible
+    self.paddingTop = paddingTop
+  }
 }
