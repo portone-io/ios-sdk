@@ -21,8 +21,7 @@ jobs:
     - name: Setup Node.js 20.x
       uses: actions/setup-node@v4
       with:
-        node-version: 20
-        cache: pnpm
+        node-version: 24
     - name: Install Dependencies
       run: pnpm install
     - name: Create Release Pull Request or Publish
@@ -34,5 +33,9 @@ jobs:
       if: ${{ steps.changesets.outputs.hasChangesets == 'false' }}
       run: |
         export VERSION=$(jq -r '.version' package.json)
-        git tag "$VERSION"
-        git push --tags
+        if [ -n "$(git ls-remote --tags origin "refs/tags/$VERSION")" ]; then
+          echo "Tag $VERSION already exists on remote, skipping."
+        else
+          git tag "$VERSION"
+          git push origin "refs/tags/$VERSION"
+        fi
