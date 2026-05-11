@@ -9,6 +9,6 @@
     "node": ">=24.0.0"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.5"
+    "@changesets/cli": "^2.31.0"
   }
 }
