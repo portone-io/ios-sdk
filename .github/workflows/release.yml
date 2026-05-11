@@ -23,7 +23,7 @@ jobs:
       with:
         persist-credentials: false
     - name: Setup pnpm
-      uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d
+      uses: pnpm/action-setup@8912a9102ac27614460f54aedde9e1e7f9aec20d
     - name: Setup Node.js 20.x
       uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
       with:
