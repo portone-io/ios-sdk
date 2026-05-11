@@ -15,18 +15,18 @@ jobs:
       actions: write
       pull-requests: write
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
     - name: Setup pnpm
-      uses: pnpm/action-setup@v3
+      uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d
     - name: Setup Node.js 20.x
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
       with:
         node-version: 24
     - name: Install Dependencies
       run: pnpm install
     - name: Create Release Pull Request or Publish
       id: changesets
-      uses: changesets/action@v1
+      uses: changesets/action@63a615b9cd06ba9a3e6d13796c7fbcb080a60a0b
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Push Tags
