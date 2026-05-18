@@ -1,5 +1,11 @@
 # PortOneSdk
 
+## 0.2.1
+
+### Patch Changes
+
+- 99ebb30: `@portone/browser-sdk` v0.1.7 릴리즈에 따라 타입을 동기화합니다.
+
 ## 0.2.0
 
 ### Minor Changes
