@@ -29,11 +29,6 @@ jobs:
       with:
         xcode-version: latest-stable
 
-    - name: Download iOS Platform
-      run: |
-        xcrun simctl list > /dev/null
-        xcodebuild -downloadPlatform iOS
-
     - name: Build Swift Package
       run: xcodebuild build -scheme PortOneSdk -destination "generic/platform=iOS Simulator"
 

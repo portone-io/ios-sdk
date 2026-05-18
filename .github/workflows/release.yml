@@ -15,8 +15,7 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # 태그 생성을 위해 GitHub Contents API에 쓰기 권한 필요
-      actions: write  # changesets/action 내부 동작에 actions API 쓰기 권한 필요
+      contents: write  # 태그 생성 및 릴리즈 PR 브랜치 푸시에 쓰기 권한 필요
       pull-requests: write  # changesets/action이 릴리즈 PR을 생성하기 위해 필요
     steps:
     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
@@ -29,7 +28,7 @@ jobs:
       with:
         node-version: 24
     - name: Install Dependencies
-      run: pnpm install
+      run: pnpm install --frozen-lockfile
     - name: Create Release Pull Request or Publish
       id: changesets
       uses: changesets/action@63a615b9cd06ba9a3e6d13796c7fbcb080a60a0b
