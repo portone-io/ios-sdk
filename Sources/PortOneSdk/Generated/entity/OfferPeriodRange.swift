@@ -25,11 +25,11 @@ public enum OfferPeriodRange: Codable {
 
   public func encode(to encoder: Encoder) throws {
     switch self {
-    case .offerPeriodRangeFrom(let value):
+    case let .offerPeriodRangeFrom(value):
       try value.encode(to: encoder)
-    case .offerPeriodRangeTo(let value):
+    case let .offerPeriodRangeTo(value):
       try value.encode(to: encoder)
-    case .offerPeriodRangeFromTo(let value):
+    case let .offerPeriodRangeFromTo(value):
       try value.encode(to: encoder)
     }
   }

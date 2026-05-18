@@ -4,7 +4,7 @@
 import Foundation
 
 /// 청구지 정보
-public struct EximbayV2BillTo: Codable {
+public struct PaymentEximbayV2BillTo: Codable {
   /// 청구지 도시
   public let city: String?
   /// 청구지 국가 (ISO 3166 두 자리 국가 코드)

@@ -42,9 +42,9 @@ public enum PaymentRequestUnionVirtualAccountAccountExpiry: Codable {
   public func encode(to encoder: Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     switch self {
-    case .validHours(let value):
+    case let .validHours(value):
       try container.encode(value, forKey: .validHours)
-    case .dueDate(let value):
+    case let .dueDate(value):
       try container.encode(value, forKey: .dueDate)
     }
   }

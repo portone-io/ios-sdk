@@ -31,9 +31,9 @@ public enum PaymentRequestUnionVirtualAccountFixedOption: Codable {
   public func encode(to encoder: Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     switch self {
-    case .pgAccountId(let value):
+    case let .pgAccountId(value):
       try container.encode(value, forKey: .pgAccountId)
-    case .accountNumber(let value):
+    case let .accountNumber(value):
       try container.encode(value, forKey: .accountNumber)
     }
   }

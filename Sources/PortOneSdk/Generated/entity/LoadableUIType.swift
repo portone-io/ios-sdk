@@ -21,9 +21,9 @@ public enum LoadableUIType: Codable {
 
   public func encode(to encoder: Encoder) throws {
     switch self {
-    case .paymentUIType(let value):
+    case let .paymentUIType(value):
       try value.encode(to: encoder)
-    case .issueBillingKeyUIType(let value):
+    case let .issueBillingKeyUIType(value):
       try value.encode(to: encoder)
     }
   }
