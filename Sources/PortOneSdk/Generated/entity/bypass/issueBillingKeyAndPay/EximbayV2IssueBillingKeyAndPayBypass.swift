@@ -7,19 +7,20 @@ import Foundation
 public struct EximbayV2IssueBillingKeyAndPayBypass: Codable {
   /// 결제 정보
   public let payment: IssueBillingKeyAndPayEximbayV2Payment?
-  /// 상점 정보
-  public let merchant: EximbayV2Merchant?
+  public let merchant: IssueBillingKeyAndPayEximbayV2Merchant?
   /// **최대 3개의 추가 비용 목록**
-  public let surcharge: [EximbayV2Surcharge]?
-  /// 배송지 정보
-  public let shipTo: EximbayV2ShipTo?
-  /// 청구지 정보
-  public let billTo: EximbayV2BillTo?
+  public let surcharge: [IssueBillingKeyAndPayEximbayV2Surcharge]?
+  /// **배송지 정보**
+  public let shipTo: IssueBillingKeyAndPayEximbayV2ShipTo?
+  /// **청구지 정보**
+  public let billTo: IssueBillingKeyAndPayEximbayV2BillTo?
 
   public init(
-    payment: IssueBillingKeyAndPayEximbayV2Payment? = nil, merchant: EximbayV2Merchant? = nil,
-    surcharge: [EximbayV2Surcharge]? = nil, shipTo: EximbayV2ShipTo? = nil,
-    billTo: EximbayV2BillTo? = nil
+    payment: IssueBillingKeyAndPayEximbayV2Payment? = nil,
+    merchant: IssueBillingKeyAndPayEximbayV2Merchant? = nil,
+    surcharge: [IssueBillingKeyAndPayEximbayV2Surcharge]? = nil,
+    shipTo: IssueBillingKeyAndPayEximbayV2ShipTo? = nil,
+    billTo: IssueBillingKeyAndPayEximbayV2BillTo? = nil
   ) {
     self.payment = payment
     self.merchant = merchant

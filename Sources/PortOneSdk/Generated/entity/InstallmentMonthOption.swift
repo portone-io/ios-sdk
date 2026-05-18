@@ -58,9 +58,9 @@ public enum InstallmentMonthOption: Codable {
   public func encode(to encoder: Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     switch self {
-    case .fixedMonth(let value):
+    case let .fixedMonth(value):
       try container.encode(value, forKey: .fixedMonth)
-    case .availableMonthList(let value):
+    case let .availableMonthList(value):
       try container.encode(value, forKey: .availableMonthList)
     }
   }

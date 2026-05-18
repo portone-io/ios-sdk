@@ -9,9 +9,15 @@ public struct KsnetPaymentBypass: Codable {
   public let sndQpayType: KsnetSndQpayType?
   /// **KSNET 간편결제 다이렉트 여부**
   public let easyPayDirect: Bool?
+  /// 카드 결제창에서 카카오페이 결제시 허용할 결제수단
+  public let sndKakaopayType: KsnetSndKakaopayType?
 
-  public init(sndQpayType: KsnetSndQpayType? = nil, easyPayDirect: Bool? = nil) {
+  public init(
+    sndQpayType: KsnetSndQpayType? = nil, easyPayDirect: Bool? = nil,
+    sndKakaopayType: KsnetSndKakaopayType? = nil
+  ) {
     self.sndQpayType = sndQpayType
     self.easyPayDirect = easyPayDirect
+    self.sndKakaopayType = sndKakaopayType
   }
 }

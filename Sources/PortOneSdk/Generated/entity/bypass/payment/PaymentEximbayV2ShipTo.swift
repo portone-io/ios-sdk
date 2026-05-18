@@ -4,7 +4,7 @@
 import Foundation
 
 /// 배송지 정보
-public struct EximbayV2ShipTo: Codable {
+public struct PaymentEximbayV2ShipTo: Codable {
   /// 배송지 도시
   public let city: String?
   /// 배송지 국가 (ISO 3166 두 자리 국가 코드)

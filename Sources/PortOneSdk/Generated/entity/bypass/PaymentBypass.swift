@@ -47,6 +47,8 @@ public struct PaymentBypass: Codable {
   public let mobiliansV2: MobiliansV2Bypass?
   /// Triple-A bypass 파라미터
   public let tripleA: TripleABypass?
+  /// Paymentwall bypass 파라미터
+  public let paymentwall: PaymentwallBypass?
 
   private enum CodingKeys: String, CodingKey {
     case tosspayments
@@ -69,6 +71,7 @@ public struct PaymentBypass: Codable {
     case payletterGlobal = "payletter_global"
     case mobiliansV2 = "mobilians_v2"
     case tripleA = "triple_a"
+    case paymentwall
   }
 
   public init(
@@ -81,7 +84,7 @@ public struct PaymentBypass: Codable {
     hyphen: HyphenBypass? = nil, eximbayV2: EximbayV2Bypass? = nil,
     galaxia: GalaxiaPaymentBypass? = nil, inicisJp: InicisJpBypass? = nil,
     payletterGlobal: PayletterGlobalBypass? = nil, mobiliansV2: MobiliansV2Bypass? = nil,
-    tripleA: TripleABypass? = nil
+    tripleA: TripleABypass? = nil, paymentwall: PaymentwallBypass? = nil
   ) {
     self.tosspayments = tosspayments
     self.niceV2 = niceV2
@@ -103,5 +106,6 @@ public struct PaymentBypass: Codable {
     self.payletterGlobal = payletterGlobal
     self.mobiliansV2 = mobiliansV2
     self.tripleA = tripleA
+    self.paymentwall = paymentwall
   }
 }

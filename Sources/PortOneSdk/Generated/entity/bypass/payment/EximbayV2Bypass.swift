@@ -8,15 +8,15 @@ public struct EximbayV2Bypass: Codable {
   /// 결제 정보
   public let payment: PaymentEximbayV2Payment?
   /// 상점 정보
-  public let merchant: EximbayV2Merchant?
+  public let merchant: PaymentEximbayV2Merchant?
   /// 세금 정보
   public let tax: EximbayV2Tax?
   /// 최대 3개의 추가 비용 목록
-  public let surcharge: [EximbayV2Surcharge]?
+  public let surcharge: [PaymentEximbayV2Surcharge]?
   /// 배송지 정보
-  public let shipTo: EximbayV2ShipTo?
+  public let shipTo: PaymentEximbayV2ShipTo?
   /// 청구지 정보
-  public let billTo: EximbayV2BillTo?
+  public let billTo: PaymentEximbayV2BillTo?
   /// 설정 정보
   public let settings: EximbayV2Settings?
 
@@ -31,9 +31,9 @@ public struct EximbayV2Bypass: Codable {
   }
 
   public init(
-    payment: PaymentEximbayV2Payment? = nil, merchant: EximbayV2Merchant? = nil,
-    tax: EximbayV2Tax? = nil, surcharge: [EximbayV2Surcharge]? = nil,
-    shipTo: EximbayV2ShipTo? = nil, billTo: EximbayV2BillTo? = nil,
+    payment: PaymentEximbayV2Payment? = nil, merchant: PaymentEximbayV2Merchant? = nil,
+    tax: EximbayV2Tax? = nil, surcharge: [PaymentEximbayV2Surcharge]? = nil,
+    shipTo: PaymentEximbayV2ShipTo? = nil, billTo: PaymentEximbayV2BillTo? = nil,
     settings: EximbayV2Settings? = nil
   ) {
     self.payment = payment

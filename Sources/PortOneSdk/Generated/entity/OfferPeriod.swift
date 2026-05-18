@@ -72,9 +72,9 @@ public enum OfferPeriod: Codable {
   public func encode(to encoder: Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     switch self {
-    case .range(let value):
+    case let .range(value):
       try container.encode(value, forKey: .range)
-    case .interval(let value):
+    case let .interval(value):
       try container.encode(value, forKey: .interval)
     }
   }
