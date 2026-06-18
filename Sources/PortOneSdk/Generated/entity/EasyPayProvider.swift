@@ -81,7 +81,12 @@ public enum EasyPayProvider: String, Codable {
   /// - 나이스페이먼츠
   /// - KG이니시스
   /// - NHN KCP
+  /// - 헥토파이낸셜 해외결제
   case APPLEPAY
+  /// 구글페이
+  ///
+  /// - 헥토파이낸셜 해외결제
+  case GOOGLE_PAY
   /// LG페이
   ///
   /// - 토스페이먼츠
@@ -109,6 +114,7 @@ public enum EasyPayProvider: String, Codable {
   /// PayPay
   ///
   /// - KG이니시스 JPPG/SBPS 일본결제
+  /// - 헥토파이낸셜 해외결제
   case PAYPAY
   /// 아마존페이
   ///
@@ -117,6 +123,7 @@ public enum EasyPayProvider: String, Codable {
   /// 라쿠텐페이
   ///
   /// - KG이니시스 JPPG 일본결제
+  /// - 헥토파이낸셜 해외결제
   case RAKUTENPAY
   /// dBarai
   ///
@@ -125,10 +132,12 @@ public enum EasyPayProvider: String, Codable {
   /// auPAY
   ///
   /// - KG이니시스 JPPG 일본결제
+  /// - 헥토파이낸셜 해외결제
   case AUPAY
   /// Merpay
   ///
   /// - KG이니시스 JPPG 일본결제
+  /// - 헥토파이낸셜 해외결제
   case MERPAY
   /// Alipay
   ///
@@ -186,4 +195,8 @@ public enum EasyPayProvider: String, Codable {
   ///
   /// - KICC V2 알리페이 플러스
   case WECHAT
+  /// 페이팔
+  ///
+  /// - 토스페이먼츠
+  case PAYPAL
 }

@@ -9,9 +9,15 @@ public struct TosspaymentsPaymentBypass: Codable {
   public let discountCode: String?
   /// 해외 카드로만 결제가 가능하도록 할 지 여부
   public let useInternationalCardOnly: Bool?
+  /// 판매자 보호/위험 관리 파라미터
+  public let paypal: TosspaymentsPaypal?
 
-  public init(discountCode: String? = nil, useInternationalCardOnly: Bool? = nil) {
+  public init(
+    discountCode: String? = nil, useInternationalCardOnly: Bool? = nil,
+    paypal: TosspaymentsPaypal? = nil
+  ) {
     self.discountCode = discountCode
     self.useInternationalCardOnly = useInternationalCardOnly
+    self.paypal = paypal
   }
 }
