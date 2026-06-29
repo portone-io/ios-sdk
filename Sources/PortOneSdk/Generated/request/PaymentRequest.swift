@@ -175,6 +175,8 @@ public struct PaymentRequest: Codable {
   ///
   /// 포트원의 프로모션 기능 이용시 지정합니다.
   public let promotionId: String?
+  /// **Merpay 상품 카테고리 ID**
+  public let merpayCategoryId: String?
   /// **팝업 관련 필드**
   ///
   /// UI가 팝업 창으로 열릴 때 적용되는 속성입니다.
@@ -209,8 +211,9 @@ public struct PaymentRequest: Codable {
     locale: PortOneLocale? = nil, customData: JSONValue? = nil, country: Country? = nil,
     productType: ProductType? = nil, offerPeriod: OfferPeriod? = nil,
     storeDetails: StoreDetails? = nil, shippingAddress: Address? = nil, promotionId: String? = nil,
-    popup: Popup? = nil, iframe: Iframe? = nil, bypass: PaymentBypass? = nil,
-    card: PaymentRequestUnionCard? = nil, virtualAccount: PaymentRequestUnionVirtualAccount? = nil,
+    merpayCategoryId: String? = nil, popup: Popup? = nil, iframe: Iframe? = nil,
+    bypass: PaymentBypass? = nil, card: PaymentRequestUnionCard? = nil,
+    virtualAccount: PaymentRequestUnionVirtualAccount? = nil,
     transfer: PaymentRequestUnionTransfer? = nil, mobile: PaymentRequestUnionMobile? = nil,
     giftCertificate: PaymentRequestUnionGiftCertificate? = nil,
     easyPay: PaymentRequestUnionEasyPay? = nil, paypal: PaymentRequestUnionPaypal? = nil,
@@ -246,6 +249,7 @@ public struct PaymentRequest: Codable {
     self.storeDetails = storeDetails
     self.shippingAddress = shippingAddress
     self.promotionId = promotionId
+    self.merpayCategoryId = merpayCategoryId
     self.popup = popup
     self.iframe = iframe
     self.bypass = bypass

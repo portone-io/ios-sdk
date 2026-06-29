@@ -29,10 +29,12 @@ public struct Product: Codable {
   public let tag: String?
   /// **상품 판매 URL**
   public let link: String?
+  /// **상품 설명**
+  public let description: String?
 
   public init(
     id: String, name: String, code: String? = nil, amount: Int, quantity: Int, tag: String? = nil,
-    link: String? = nil
+    link: String? = nil, description: String? = nil
   ) {
     self.id = id
     self.name = name
@@ -41,5 +43,6 @@ public struct Product: Codable {
     self.quantity = quantity
     self.tag = tag
     self.link = link
+    self.description = description
   }
 }
