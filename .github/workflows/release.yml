@@ -18,7 +18,7 @@ jobs:
       contents: write  # 태그 생성 및 릴리즈 PR 브랜치 푸시에 쓰기 권한 필요
       pull-requests: write  # changesets/action이 릴리즈 PR을 생성하기 위해 필요
     steps:
-    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       with:
         persist-credentials: false
     - name: Setup pnpm
