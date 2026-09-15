@@ -48,6 +48,9 @@ import Foundation
 /// - 무이자 할부는 가맹점이 수수료를 부담하는 방식입니다
 public struct Installment: Codable {
   /// **무이자 할부 설정**
+  ///
+  /// 상점 부담 무이자 할부를 이용하려면 PG사와 사전 협의가 필요합니다.
+  /// 요청에 상점 부담 무이자 필드를 직접 설정해야 하는지 PG사에 확인해 주세요.
   public let freeInstallmentPlans: [FreeInstallmentPlan]?
   /// **할부 개월 수 설정**
   ///
