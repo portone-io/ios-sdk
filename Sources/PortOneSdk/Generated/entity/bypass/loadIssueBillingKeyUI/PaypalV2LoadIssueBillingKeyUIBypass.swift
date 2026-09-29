@@ -7,22 +7,34 @@ import Foundation
 public struct PaypalV2LoadIssueBillingKeyUIBypass: Codable {
   /// 페이팔 빌링키 발급 UI 호출 시 필요한 파라미터
   public let style: LoadIssueBillingKeyUiPaypalV2Style?
+  /// 허용할 결제 수단 (예: "paylater,venmo")
+  ///
+  /// 전달할 수 있는 값은 https://developer.paypal.com/sdk/js/v5/configuration#enable-funding 을 참고하세요.
+  public let enableFunding: String?
+  /// 차단할 결제 수단 (예: "credit,paylater")
+  ///
+  /// 전달할 수 있는 값은 https://developer.paypal.com/sdk/js/v5/configuration#disable-funding 을 참고하세요.
+  public let disableFunding: String?
   public let shippingAddress: PaypalV2ShippingAddress?
   /// STC 파라미터
   public let additionalData: [LoadIssueBillingKeyUiPaypalV2AdditionalData]?
 
   private enum CodingKeys: String, CodingKey {
     case style
+    case enableFunding = "enable-funding"
+    case disableFunding = "disable-funding"
     case shippingAddress = "shipping_address"
     case additionalData = "additional_data"
   }
 
   public init(
-    style: LoadIssueBillingKeyUiPaypalV2Style? = nil,
-    shippingAddress: PaypalV2ShippingAddress? = nil,
+    style: LoadIssueBillingKeyUiPaypalV2Style? = nil, enableFunding: String? = nil,
+    disableFunding: String? = nil, shippingAddress: PaypalV2ShippingAddress? = nil,
     additionalData: [LoadIssueBillingKeyUiPaypalV2AdditionalData]? = nil
   ) {
     self.style = style
+    self.enableFunding = enableFunding
+    self.disableFunding = disableFunding
     self.shippingAddress = shippingAddress
     self.additionalData = additionalData
   }
