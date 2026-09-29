@@ -33,11 +33,16 @@ import Foundation
 public struct FreeInstallmentPlan: Codable {
   /// 카드 결제시 사용되는 카드사 코드
   public let cardCompany: CardCompany
+  /// **무이자 할부를 적용할 PG사 구분코드**
+  public let pgProvider: FreeInstallmentPlanPgProvider?
   /// **무이자 할부를 제공하는 개월 수**
   public let months: [Int]
 
-  public init(cardCompany: CardCompany, months: [Int]) {
+  public init(
+    cardCompany: CardCompany, pgProvider: FreeInstallmentPlanPgProvider? = nil, months: [Int]
+  ) {
     self.cardCompany = cardCompany
+    self.pgProvider = pgProvider
     self.months = months
   }
 }
