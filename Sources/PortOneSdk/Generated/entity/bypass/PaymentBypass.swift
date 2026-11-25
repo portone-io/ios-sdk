@@ -37,12 +37,12 @@ public struct PaymentBypass: Codable {
   public let hyphen: HyphenBypass?
   /// 엑심베이 V2 bypass 파라미터
   public let eximbayV2: EximbayV2Bypass?
-  /// 갤럭시아 bypass 파라미터
-  public let galaxia: GalaxiaPaymentBypass?
   /// 이니시스 일본 bypass 파라미터
   public let inicisJp: InicisJpBypass?
   /// 페이레터 해외결제 bypass 파라미터
   public let payletterGlobal: PayletterGlobalBypass?
+  /// 페이레터 국내결제 bypass 파라미터
+  public let payletter: PayletterBypass?
   /// 모빌리언스 V2 bypass 파라미터
   public let mobiliansV2: MobiliansV2Bypass?
   /// Triple-A bypass 파라미터
@@ -66,9 +66,9 @@ public struct PaymentBypass: Codable {
     case tossBrandpay = "toss_brandpay"
     case hyphen
     case eximbayV2 = "eximbay_v2"
-    case galaxia
     case inicisJp = "inicis_jp"
     case payletterGlobal = "payletter_global"
+    case payletter
     case mobiliansV2 = "mobilians_v2"
     case tripleA = "triple_a"
     case paymentwall
@@ -81,10 +81,10 @@ public struct PaymentBypass: Codable {
     ksnet: KsnetPaymentBypass? = nil, welcome: WelcomePaymentBypass? = nil, kpn: KpnBypass? = nil,
     naverpay: NaverpayPaymentBypass? = nil, kakaopay: KakaopayPaymentBypass? = nil,
     tosspayV2: TosspayV2PaymentBypass? = nil, tossBrandpay: TossBrandpayPaymentBypass? = nil,
-    hyphen: HyphenBypass? = nil, eximbayV2: EximbayV2Bypass? = nil,
-    galaxia: GalaxiaPaymentBypass? = nil, inicisJp: InicisJpBypass? = nil,
-    payletterGlobal: PayletterGlobalBypass? = nil, mobiliansV2: MobiliansV2Bypass? = nil,
-    tripleA: TripleABypass? = nil, paymentwall: PaymentwallBypass? = nil
+    hyphen: HyphenBypass? = nil, eximbayV2: EximbayV2Bypass? = nil, inicisJp: InicisJpBypass? = nil,
+    payletterGlobal: PayletterGlobalBypass? = nil, payletter: PayletterBypass? = nil,
+    mobiliansV2: MobiliansV2Bypass? = nil, tripleA: TripleABypass? = nil,
+    paymentwall: PaymentwallBypass? = nil
   ) {
     self.tosspayments = tosspayments
     self.niceV2 = niceV2
@@ -101,9 +101,9 @@ public struct PaymentBypass: Codable {
     self.tossBrandpay = tossBrandpay
     self.hyphen = hyphen
     self.eximbayV2 = eximbayV2
-    self.galaxia = galaxia
     self.inicisJp = inicisJp
     self.payletterGlobal = payletterGlobal
+    self.payletter = payletter
     self.mobiliansV2 = mobiliansV2
     self.tripleA = tripleA
     self.paymentwall = paymentwall

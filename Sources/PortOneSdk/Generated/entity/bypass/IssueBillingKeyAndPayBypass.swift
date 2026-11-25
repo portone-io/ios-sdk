@@ -10,25 +10,20 @@ public struct IssueBillingKeyAndPayBypass: Codable {
   public let payletterGlobal: PayletterGlobalIssueBillingKeyAndPayBypass?
   /// **엑심베이 bypass 파라미터**
   public let eximbayV2: EximbayV2IssueBillingKeyAndPayBypass?
-  /// **갤럭시아 bypass 파라미터**
-  public let galaxia: GalaxiaIssueBillingKeyAndPayBypass?
 
   private enum CodingKeys: String, CodingKey {
     case welcome
     case payletterGlobal = "payletter_global"
     case eximbayV2 = "eximbay_v2"
-    case galaxia
   }
 
   public init(
     welcome: WelcomeIssueBillingKeyAndPayBypass? = nil,
     payletterGlobal: PayletterGlobalIssueBillingKeyAndPayBypass? = nil,
-    eximbayV2: EximbayV2IssueBillingKeyAndPayBypass? = nil,
-    galaxia: GalaxiaIssueBillingKeyAndPayBypass? = nil
+    eximbayV2: EximbayV2IssueBillingKeyAndPayBypass? = nil
   ) {
     self.welcome = welcome
     self.payletterGlobal = payletterGlobal
     self.eximbayV2 = eximbayV2
-    self.galaxia = galaxia
   }
 }

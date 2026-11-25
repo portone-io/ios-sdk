@@ -25,7 +25,7 @@ public struct IssueBillingKeyRequest: Codable {
   /// 채널 키와 채널 그룹 ID 중 하나를 지정해야 합니다.
   public let channelKey: String?
   /// 빌링키 발급 수단
-  public let billingKeyMethod: BillingKeyMethod
+  public let billingKeyMethod: BillingKeyMethod?
   /// 빌링키 발급 주문 명
   public let issueName: String?
   /// 빌링키 발급 주문 고유 번호
@@ -112,7 +112,7 @@ public struct IssueBillingKeyRequest: Codable {
 
   public init(
     displayAmount: Int? = nil, currency: Currency? = nil, storeId: String,
-    channelKey: String? = nil, billingKeyMethod: BillingKeyMethod, issueName: String? = nil,
+    channelKey: String? = nil, billingKeyMethod: BillingKeyMethod? = nil, issueName: String? = nil,
     issueId: String? = nil, customer: Customer? = nil, windowType: WindowTypes? = nil,
     forceRedirect: Bool? = nil, locale: PortOneLocale? = nil, customData: JSONValue? = nil,
     offerPeriod: OfferPeriod? = nil, appScheme: String? = nil, noticeUrls: [String]? = nil,

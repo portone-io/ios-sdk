@@ -17,6 +17,8 @@ public struct EximbayV2Bypass: Codable {
   public let shipTo: PaymentEximbayV2ShipTo?
   /// 청구지 정보
   public let billTo: PaymentEximbayV2BillTo?
+  /// 페이팔 정보
+  public let paypal: EximbayV2Paypal?
   /// 설정 정보
   public let settings: EximbayV2Settings?
 
@@ -27,6 +29,7 @@ public struct EximbayV2Bypass: Codable {
     case surcharge
     case shipTo = "ship_to"
     case billTo = "bill_to"
+    case paypal
     case settings
   }
 
@@ -34,7 +37,7 @@ public struct EximbayV2Bypass: Codable {
     payment: PaymentEximbayV2Payment? = nil, merchant: PaymentEximbayV2Merchant? = nil,
     tax: EximbayV2Tax? = nil, surcharge: [PaymentEximbayV2Surcharge]? = nil,
     shipTo: PaymentEximbayV2ShipTo? = nil, billTo: PaymentEximbayV2BillTo? = nil,
-    settings: EximbayV2Settings? = nil
+    paypal: EximbayV2Paypal? = nil, settings: EximbayV2Settings? = nil
   ) {
     self.payment = payment
     self.merchant = merchant
@@ -42,6 +45,7 @@ public struct EximbayV2Bypass: Codable {
     self.surcharge = surcharge
     self.shipTo = shipTo
     self.billTo = billTo
+    self.paypal = paypal
     self.settings = settings
   }
 }

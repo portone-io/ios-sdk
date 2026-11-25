@@ -12,6 +12,12 @@ public struct IdentityVerificationBypass: Codable {
   /// **KCP bypass 파라미터**
   public let kcpV2: KcpV2IdentityVerificationBypass?
 
+  private enum CodingKeys: String, CodingKey {
+    case danal
+    case inicisUnified
+    case kcpV2 = "kcp_v2"
+  }
+
   public init(
     danal: DanalIdentityVerificationBypass? = nil,
     inicisUnified: InicisUnifiedIdentityVerificationBypass? = nil,
