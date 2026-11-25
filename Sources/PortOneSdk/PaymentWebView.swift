@@ -167,12 +167,12 @@ public struct PaymentWebView: UIViewRepresentable {
       if let scheme = url.scheme, !["http", "https"].contains(scheme.lowercased()) {
         decisionHandler(.cancel)  // 이동 제한
         logger.info("Found app scheme: \(scheme)")
-        if UIApplication.shared.canOpenURL(url) {
-          UIApplication.shared.open(url, options: [:]) { success in
+        UIApplication.shared.open(url, options: [:]) { success in
+          if success {
             logger.info("App opened: \(success)")
+          } else {
+            logger.warning("Cannot open URL with scheme '\(scheme)' - app may not be installed")
           }
-        } else {
-          logger.warning("Cannot open URL with scheme '\(scheme)' - app may not be installed")
         }
         return
       }

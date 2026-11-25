@@ -44,31 +44,21 @@ dependencies: [
 앱의 `Info.plist`에 다음 설정을 추가해야 합니다.
 자세한 내용은 [SwiftExample/SwiftExample/Info.plist](SwiftExample/SwiftExample/Info.plist) 또는 [UIKitExample/UIKitExample/Info.plist](UIKitExample/UIKitExample/Info.plist)에서 확인할 수 있습니다.
 
-1. **URL Scheme 등록** (결제 완료 후 앱으로 돌아오기 위함)
+**복귀용 URL 스킴 등록**
 
-   ```xml
-   <key>CFBundleURLTypes</key>
-   <array>
-       <dict>
-           <key>CFBundleURLSchemes</key>
-           <array>
-               <string>your-app-scheme</string>
-           </array>
-       </dict>
-   </array>
-   ```
+외부 결제 앱에서 고객사 앱으로 돌아올 때 사용하는 URL 스킴을 등록하세요. 결제 요청의 `appScheme` 값에는 등록한 스킴을 사용합니다(예: `your-app-scheme://`).
 
-2. **외부 결제 앱 스킴 등록** (한국 결제 앱 연동을 위함)
-   ```xml
-   <key>LSApplicationQueriesSchemes</key>
-   <array>
-       <string>kakaotalk</string>
-       <string>naverpay</string>
-       <string>ispmobile</string>
-       <string>shinhan-sr-ansimclick</string>
-       <!-- ... -->
-   </array>
-   ```
+```xml
+<key>CFBundleURLTypes</key>
+<array>
+    <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>your-app-scheme</string>
+        </array>
+    </dict>
+</array>
+```
 
 ## 사용법
 
