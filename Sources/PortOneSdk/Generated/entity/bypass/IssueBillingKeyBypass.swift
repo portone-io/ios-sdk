@@ -12,8 +12,6 @@ public struct IssueBillingKeyBypass: Codable {
   public let smartroV2: SmartroV2IssueBillingKeyBypass?
   /// **웰컴페이먼츠 bypass 파라미터**
   public let welcome: WelcomeIssueBillingKeyBypass?
-  /// **갤럭시아 bypass 파라미터**
-  public let galaxia: GalaxiaIssueBillingKeyBypass?
   /// **네이버페이 bypass 파라미터**
   public let naverpay: NaverpayIssueBillingKeyBypass?
   /// 카카오페이 bypass 파라미터
@@ -26,7 +24,6 @@ public struct IssueBillingKeyBypass: Codable {
     case kcpV2 = "kcp_v2"
     case smartroV2 = "smartro_v2"
     case welcome
-    case galaxia
     case naverpay
     case kakaopay
     case tosspayV2 = "tosspay_v2"
@@ -35,14 +32,13 @@ public struct IssueBillingKeyBypass: Codable {
   public init(
     inicisV2: InicisV2IssueBillingKeyBypass? = nil, kcpV2: KcpV2IssueBillingKeyBypass? = nil,
     smartroV2: SmartroV2IssueBillingKeyBypass? = nil, welcome: WelcomeIssueBillingKeyBypass? = nil,
-    galaxia: GalaxiaIssueBillingKeyBypass? = nil, naverpay: NaverpayIssueBillingKeyBypass? = nil,
-    kakaopay: KakaopayPaymentBypass? = nil, tosspayV2: TosspayV2IssueBillingKeyBypass? = nil
+    naverpay: NaverpayIssueBillingKeyBypass? = nil, kakaopay: KakaopayPaymentBypass? = nil,
+    tosspayV2: TosspayV2IssueBillingKeyBypass? = nil
   ) {
     self.inicisV2 = inicisV2
     self.kcpV2 = kcpV2
     self.smartroV2 = smartroV2
     self.welcome = welcome
-    self.galaxia = galaxia
     self.naverpay = naverpay
     self.kakaopay = kakaopay
     self.tosspayV2 = tosspayV2
