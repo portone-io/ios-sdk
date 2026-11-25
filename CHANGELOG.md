@@ -1,5 +1,12 @@
 # PortOneSdk
 
+## 0.3.0
+
+### Minor Changes
+
+- cd2dcb8: `@portone/browser-sdk` v0.2.1 소스 스키마에 따라 타입을 동기화합니다.
+- 449d4f3: 결제·빌링키 발급·본인인증 중 외부 앱의 설치 여부를 조회하지 않고 바로 열도록 변경합니다. 외부 앱 실행용 LSApplicationQueriesSchemes 등록이 필요하지 않습니다.
+
 ## 0.2.2
 
 ### Patch Changes
