@@ -60,8 +60,6 @@ dependencies: [
 </array>
 ```
 
-SDK는 외부 앱의 설치 여부를 조회하지 않고 바로 열기를 시도합니다. SDK에서 외부 앱을 여는 용도로 추가한 `LSApplicationQueriesSchemes` 항목은 제거해도 됩니다. 앱의 다른 기능에서 `canOpenURL`을 사용한다면 해당 스킴 선언은 유지하세요.
-
 ## 사용법
 
 SDK는 SwiftUI와 UIKit 모두를 지원합니다:
