@@ -76,7 +76,6 @@ This iOS SDK provides SwiftUI components for integrating PortOne payment service
 ### Integration Requirements
 
 - **URL Schemes**: Apps must configure custom URL schemes in Info.plist for payment callbacks
-- **Payment App Schemes**: The SDK opens external apps directly without querying their availability.
 - **Credentials**: Valid PortOne storeId and channelKey required for API calls
 
 ### Development Considerations
