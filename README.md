@@ -44,31 +44,23 @@ dependencies: [
 앱의 `Info.plist`에 다음 설정을 추가해야 합니다.
 자세한 내용은 [SwiftExample/SwiftExample/Info.plist](SwiftExample/SwiftExample/Info.plist) 또는 [UIKitExample/UIKitExample/Info.plist](UIKitExample/UIKitExample/Info.plist)에서 확인할 수 있습니다.
 
-1. **URL Scheme 등록** (결제 완료 후 앱으로 돌아오기 위함)
+**복귀용 URL 스킴 등록**
 
-   ```xml
-   <key>CFBundleURLTypes</key>
-   <array>
-       <dict>
-           <key>CFBundleURLSchemes</key>
-           <array>
-               <string>your-app-scheme</string>
-           </array>
-       </dict>
-   </array>
-   ```
+외부 결제 앱에서 고객사 앱으로 돌아올 때 사용하는 URL 스킴을 등록하세요. 결제 요청의 `appScheme` 값에는 등록한 스킴을 사용합니다(예: `your-app-scheme://`).
 
-2. **외부 결제 앱 스킴 등록** (한국 결제 앱 연동을 위함)
-   ```xml
-   <key>LSApplicationQueriesSchemes</key>
-   <array>
-       <string>kakaotalk</string>
-       <string>naverpay</string>
-       <string>ispmobile</string>
-       <string>shinhan-sr-ansimclick</string>
-       <!-- ... -->
-   </array>
-   ```
+```xml
+<key>CFBundleURLTypes</key>
+<array>
+    <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>your-app-scheme</string>
+        </array>
+    </dict>
+</array>
+```
+
+SDK는 외부 앱의 설치 여부를 조회하지 않고 바로 열기를 시도합니다. SDK에서 외부 앱을 여는 용도로 추가한 `LSApplicationQueriesSchemes` 항목은 제거해도 됩니다. 앱의 다른 기능에서 `canOpenURL`을 사용한다면 해당 스킴 선언은 유지하세요.
 
 ## 사용법
 
